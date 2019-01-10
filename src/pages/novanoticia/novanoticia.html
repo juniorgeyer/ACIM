@@ -1,0 +1,57 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <form [formGroup]="form">
+
+    <ion-item>
+      <ion-label stacked> Autor </ion-label>
+      <ion-input type= "text" formControlName="autor"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="!form.controls.autor.valid && (form.controls.autor.dirty || form.controls.autor.touched)" color="danger">
+      <div [hidden]="!form.controls.autor.erros.required">
+        O campo é obrigatório
+      </div>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked> Título </ion-label>
+      <ion-input type= "text" formControlName="titulo"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="!form.controls.titulo.valid && (form.controls.titulo.dirty || form.controls.titulo.touched)" color="danger">
+      <div [hidden]="!form.controls.titulo.erros.required">
+        O campo é obrigatório
+      </div>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked> Texto </ion-label>
+      <ion-input type= "text" formControlName="texto"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="!form.controls.texto.valid && (form.controls.texto.dirty || form.controls.texto.touched)" color="danger">
+      <div [hidden]="!form.controls.texto.erros.required">
+        O campo é obrigatório
+      </div>
+    </ion-item>
+
+    <ion-item [hidden]="!!myDate">
+          <ion-label>Date</ion-label>
+          <ion-datetime displayFormat="DD/MM/YYYY" pickerFormat="DD/MM/YYYY" formControlName="horario"></ion-datetime>
+        </ion-item>
+
+
+
+    <div padding>
+      <button ion-button block type="submit" [disabled]="!form.valid" (click)="onSubmit()"> Salvar </button>
+      </div>
+
+  </form>
+</ion-content>
