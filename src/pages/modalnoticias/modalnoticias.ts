@@ -11,7 +11,8 @@ import 'rxjs/add/operator/map';
 })
 export class ModalnoticiasPage {
   contacts: Observable<any>;
-
+  crit: String;
+  title: any;
   constructor(public navCtrl: NavController, public navParams: NavParams,private provider: CadastronoticiaProvider) {
     this.crit = navParams.get('title');
     this.contacts= this.provider.get(this.crit);
