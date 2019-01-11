@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { CadastronoticiaProvider} from './../../providers/cadastronoticia/cadastronoticia';
 import {Observable} from 'rxjs';
 import 'rxjs/add/operator/map';
@@ -10,22 +10,29 @@ import 'rxjs/add/operator/map';
   templateUrl: 'modalnoticias.html',
 })
 export class ModalnoticiasPage {
-  contacts: Observable<any>;
-  crit: String;
+  contacts: any;
+  titulo: string;
   title: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams,private provider: CadastronoticiaProvider) {
-    this.crit = navParams.get('title');
-    this.contacts= this.provider.get(this.crit);
-    console.log(this.contacts.autor);
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    private provider: CadastronoticiaProvider,
+    public viewCtrl: ViewController,) {
+    this.contacts = navParams.get('noticia');
+    this.titulo = this.contacts.titulo;
     this.setupPageTitle();
   }
 
   private setupPageTitle() {
-    this.title = this.crit;
+    this.title = this.titulo;
   }
   fechar(){
     this.navCtrl.pop();
   }
 
+  closemodal() {
+    this.viewCtrl.dismiss();
+  }
 
+  deletarNoticia(key){
+    this.provider.remove(key);
+  }
 }

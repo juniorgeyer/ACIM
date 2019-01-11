@@ -10,25 +10,18 @@ import { AgendacimPage } from '../agendacim/agendacim';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
-  selector: 'page-tabs',
   templateUrl: 'tabs.html',
 
 })
 export class TabsPage {
-    tab1Root = 'HomeinformacimPage';
-     tab2Root = 'NovanoticiaPage';
-     tab3Root = 'HomeinformacimPage';
-      tab4Root = 'AgendacimPage';
-     myIndex: number;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.myIndex = 0;
+    tab1Root = HomeinformacimPage;
+    tab2Root = NovanoticiaPage;
+    tab3Root = HomeinformacimPage;
+    tab4Root = AgendacimPage;
+    myIndex: number;
 
+  constructor() {
+    console.log("Tabs")
   }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad TabsPage');
-  }
-
 }
