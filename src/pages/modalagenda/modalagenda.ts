@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AngularFirestore } from 'angularfire2/firestore';
 declare var google;
 
 /**
@@ -19,7 +20,11 @@ public crit;
 title: string;
  
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private db: AngularFirestore) {
+    db.firestore.settings({ timestampsInSnapshots: true });
     this.crit = navParams.get('title');
     console.log(this.crit);
     this.setupPageTitle();

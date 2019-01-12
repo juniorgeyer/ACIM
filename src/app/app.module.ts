@@ -18,6 +18,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { CadastronoticiaProvider } from '../providers/cadastronoticia/cadastronoticia';
 import { NovanoticiaPage } from '../pages/novanoticia/novanoticia';
 import { AgendacimPage } from '../pages/agendacim/agendacim';
+import { FcmProvider } from '../providers/fcm/fcm';
+import { Firebase } from '@ionic-native/firebase';
 
 @NgModule({
   declarations: [
@@ -61,6 +63,8 @@ import { AgendacimPage } from '../pages/agendacim/agendacim';
     Camera,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     CadastronoticiaProvider,
+    FcmProvider,
+    Firebase
   ]
 })
 export class AppModule {}

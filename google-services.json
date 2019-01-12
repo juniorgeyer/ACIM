@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "536686096736",
+    "firebase_url": "https://acim-72c9b.firebaseio.com",
+    "project_id": "acim-72c9b",
+    "storage_bucket": "acim-72c9b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:536686096736:android:9df97f599468da05",
+        "android_client_info": {
+          "package_name": "ctech.acim"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "536686096736-gnl1nou45950u7bsnpq8vcamepns86ak.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAno4x8fGspoPWVkAAPuE9rQO7O_jCVxrA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
