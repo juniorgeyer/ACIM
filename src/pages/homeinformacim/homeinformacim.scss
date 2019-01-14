@@ -6,4 +6,12 @@ page-homeinformacim {
       margin:0 !important;
       margin-bottom: 10px !important;
     }
+
+    #div1 {
+    white-space: nowrap;
+    width: 100% !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border: 1px;
+}
 }
