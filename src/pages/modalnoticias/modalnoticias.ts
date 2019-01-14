@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { CadastronoticiaProvider} from './../../providers/cadastronoticia/cadastronoticia';
 import {Observable} from 'rxjs';
 import 'rxjs/add/operator/map';
@@ -23,7 +23,7 @@ export class ModalnoticiasPage {
   }
 
   private setupPageTitle() {
-    this.title = this.crit;
+    this.title = this.titulo;
   }
   fechar(){
     this.navCtrl.pop();
@@ -38,4 +38,7 @@ facebookShare() {
     this.socialSharing.shareViaFacebook("Compartilhando o conteúdo de um aplicativo com o Social Sharing.", "www/assets/images/ionic-logo.png", null);
 }
 
+  deletarNoticia(key){
+    this.provider.remove(key);
+  }
 }

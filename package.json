@@ -23,6 +23,7 @@
     "@ionic-native/camera": "^4.18.0",
     "@ionic-native/core": "~4.18.0",
     "@ionic-native/crop": "^4.18.0",
+    "@ionic-native/firebase": "^4.19.0",
     "@ionic-native/geolocation": "^4.19.0",
     "@ionic-native/image-picker": "^4.18.0",
     "@ionic-native/social-sharing": "^4.19.0",
@@ -34,6 +35,7 @@
     "cordova-plugin-camera": "^4.0.3",
     "cordova-plugin-crop": "^0.4.0",
     "cordova-plugin-device": "^2.0.2",
+    "cordova-plugin-firebase": "^2.0.5",
     "cordova-plugin-geolocation": "^4.0.1",
     "cordova-plugin-ionic-keyboard": "^2.1.3",
     "cordova-plugin-ionic-webview": "^2.3.1",
@@ -41,9 +43,7 @@
     "cordova-plugin-statusbar": "^2.4.2",
     "cordova-plugin-telerik-imagepicker": "^2.2.2",
     "cordova-plugin-whitelist": "^1.3.3",
-    "cordova-plugin-x-socialsharing": "^5.4.4",
-    "es6-promise-plugin": "^4.2.2",
-    "firebase": "^5.7.2",
+    "firebase": "^5.7.3",
     "ionic-angular": "3.9.2",
     "ionicons": "3.0.0",
     "moment": "^2.23.0",
@@ -77,7 +77,8 @@
       "cordova-plugin-ionic-keyboard": {},
       "cordova-plugin-x-socialsharing": {
         "ANDROID_SUPPORT_V4_VERSION": "24.1.1+"
-      }
+      },
+      "cordova-plugin-firebase": {}
     },
     "platforms": [
       "android"

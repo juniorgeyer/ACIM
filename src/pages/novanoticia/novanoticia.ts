@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angu
 import { CadastronoticiaProvider} from './../../providers/cadastronoticia/cadastronoticia';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import moment from 'moment';
+import { AngularFirestore } from 'angularfire2/firestore';
 
 /**
 * Generated class for the NovanoticiaPage page.
@@ -22,10 +23,14 @@ export class NovanoticiaPage {
   contact:any;
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,
-    private formBuilder: FormBuilder, private provider: CadastronoticiaProvider,
-    private toast: ToastController) {
-
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private formBuilder: FormBuilder, 
+    private provider: CadastronoticiaProvider,
+    private toast: ToastController,
+    private db: AngularFirestore) {
+      db.firestore.settings({ timestampsInSnapshots: true });
       this.contact = this.navParams.data.contact || {};
       this.setupPageTitle();
       this.createForm();

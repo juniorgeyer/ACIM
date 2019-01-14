@@ -9,6 +9,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 
 import { ModalController } from 'ionic-angular';
 import { ModalnoticiasPage } from '../modalnoticias/modalnoticias';
+import { AngularFirestore } from 'angularfire2/firestore';
 
 /**
 * Generated class for the HomeinformacimPage page.
@@ -24,22 +25,24 @@ import { ModalnoticiasPage } from '../modalnoticias/modalnoticias';
   templateUrl: 'homeinformacim.html'
 })
 export class HomeinformacimPage {
-  contacts: Observable<any>;
+  contacts:any;
   items = [];
 
   posts: Observable<any>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private provider: CadastronoticiaProvider, private toast: ToastController, private af: AngularFireDatabase,
-    public modalCtrl: ModalController) {
-
-      this.contacts= this.provider.getAll();
+    public modalCtrl: ModalController,
+    private db: AngularFirestore) {
+      db.firestore.settings({ timestampsInSnapshots: true });
+      this.contacts = this.provider.getAll();
+      console.log(this.contacts);
     }
 
 
     presentModal(dados) {
       console.log(dados);
-      const modal = this.modalCtrl.create('ModalnoticiasPage',{title:dados});
+      const modal = this.modalCtrl.create('ModalnoticiasPage',{"noticia":dados});
       modal.present();
     }
 

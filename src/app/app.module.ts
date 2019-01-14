@@ -11,20 +11,27 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { HomeinformacimPage} from '../pages/homeinformacim/homeinformacim';
 import { AngularFireModule} from 'angularfire2';
 import { AngularFireDatabaseModule} from 'angularfire2/database';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { SocialSharing } from '@ionic-native/social-sharing';
 
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { CadastronoticiaProvider } from '../providers/cadastronoticia/cadastronoticia';
+import { NovanoticiaPage } from '../pages/novanoticia/novanoticia';
+import { AgendacimPage } from '../pages/agendacim/agendacim';
+import { FcmProvider } from '../providers/fcm/fcm';
+import { Firebase } from '@ionic-native/firebase';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     ListPage,
-    TabsPage
-
+    TabsPage,
+    HomeinformacimPage,
+    NovanoticiaPage,
+    AgendacimPage
   ],
   imports: [
     BrowserModule,
@@ -39,15 +46,18 @@ import { CadastronoticiaProvider } from '../providers/cadastronoticia/cadastrono
  }
     ),
 
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    AngularFirestoreModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
     ListPage,
-    TabsPage
-
+    TabsPage,
+    HomeinformacimPage,
+    NovanoticiaPage,
+    AgendacimPage
   ],
   providers: [
     StatusBar,
@@ -55,7 +65,9 @@ import { CadastronoticiaProvider } from '../providers/cadastronoticia/cadastrono
     Camera,
     SocialSharing,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    CadastronoticiaProvider
+    CadastronoticiaProvider,
+    FcmProvider,
+    Firebase
   ]
 })
 export class AppModule {}
