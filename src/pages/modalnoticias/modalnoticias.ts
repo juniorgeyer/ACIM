@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,Platform, ViewController } from 'ionic-angular';
 import { CadastronoticiaProvider} from './../../providers/cadastronoticia/cadastronoticia';
 import {Observable} from 'rxjs';
 import 'rxjs/add/operator/map';
-import { SocialSharing } from "@ionic-native/social-sharing";
+import { AngularFirestore } from 'angularfire2/firestore';
+import { SocialSharing } from '@ionic-native/social-sharing';
+
 
 @IonicPage()
 @Component({
@@ -11,14 +13,26 @@ import { SocialSharing } from "@ionic-native/social-sharing";
   templateUrl: 'modalnoticias.html',
 })
 export class ModalnoticiasPage {
-  contacts: Observable<any>;
-  crit: any;
+  contacts: any;
+  titulo: string;
   title: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams,
-              private provider: CadastronoticiaProvider,    public socialSharing: SocialSharing) {
-    this.crit = navParams.get('title');
-    this.contacts= this.provider.get(this.crit);
-    console.log(this.contacts);
+
+  public message  : string = 'Take your app development skills to the next level with Mastering Ionic - the definitive guide';
+   public image    : string	= 'http://masteringionic2.com/perch/resources/mastering-ionic-2-cover-1-w320.png';
+   public uri      : string	= 'http://masteringionic2.com/products/product-detail/s/mastering-ionic-2-e-book';
+
+
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private provider: CadastronoticiaProvider,
+    public viewCtrl: ViewController,
+    private socialSharing: SocialSharing,
+    public platform   : Platform,
+    private db: AngularFirestore) {
+    db.firestore.settings({ timestampsInSnapshots: true });
+    this.contacts = navParams.get('noticia');
+    this.titulo = this.contacts.titulo;
     this.setupPageTitle();
   }
 
@@ -28,15 +42,53 @@ export class ModalnoticiasPage {
   fechar(){
     this.navCtrl.pop();
   }
-  normalShare() {
-    this.socialSharing.share("Compartilhando o conteúdo de um aplicativo com o Social Sharing.", null, "www/assets/images/ionic-logo.png", null);
-}
-whatsappShare() {
-    this.socialSharing.shareViaWhatsApp("Compartilhando o conteúdo de um aplicativo com o Social Sharing.", "www/assets/images/ionic-logo.png", null);
-}
-facebookShare() {
-    this.socialSharing.shareViaFacebook("Compartilhando o conteúdo de um aplicativo com o Social Sharing.", "www/assets/images/ionic-logo.png", null);
-}
+
+
+  whatsappShare(contact){
+      this.socialSharing.shareViaWhatsApp(contact.titulo, "data:image/png;base64,R0lGODlhDAAMALMBAP8AAP///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAUKAAEALAAAAAAMAAwAQAQZMMhJK7iY4p3nlZ8XgmNlnibXdVqolmhcRQA7" , "Venha e baixe o aplicativo ACIM! link...")
+        .then(()=>{
+          console.log("WhatsApp share successful");
+        }).catch((err)=> {
+        console.log("An error occurred ", err);
+      });
+    }
+
+   //facebookShare(contact){
+  //  this.socialSharing.shareViaFacebook(null, null , "null");
+  //}
+
+  facebookShare()
+   {
+      this.platform.ready()
+      .then(() =>
+      {
+         this.socialSharing.canShareVia('com.apple.social.facebook', this.message, this.image, this.uri)
+         .then((data) =>
+         {
+
+          this.socialSharing.shareViaFacebook(this.message, this.image, this.uri)
+            .then((data) =>
+            {
+               console.log('Shared via Facebook');
+            })
+            .catch((err) =>
+            {
+               console.log('Was not shared via Facebook');
+            });
+
+         })
+         .catch((err) =>
+         {
+            console.log('Not able to be shared via Facebook');
+         });
+
+      });
+   }
+
+
+  closemodal() {
+    this.viewCtrl.dismiss();
+  }
 
   deletarNoticia(key){
     this.provider.remove(key);

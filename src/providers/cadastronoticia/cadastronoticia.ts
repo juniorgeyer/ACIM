@@ -29,17 +29,17 @@ export class CadastronoticiaProvider {
         return data;
       });
    });
-   
+
    }
 
   get(key:string){
     var data:any = "";
-    /*return this.db.object(this.PATH+ key)
+    return this.db.object(this.PATH+ key)
     .snapshotChanges()
     //.orderByChild('texto')
     .map(c=> {
       return { key: c.key, ...c.payload.val()};
-    })*/
+    })
    }
 
   save(contact:any){
@@ -55,7 +55,7 @@ export class CadastronoticiaProvider {
               .catch((e)=> reject(e));
               }
 
-        else{          
+        else{
           this.db.list(this.PATH)
           .push({ titulo: contact.titulo,
                   imagem: contact.imagem,

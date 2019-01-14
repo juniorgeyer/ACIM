@@ -10,6 +10,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { ModalController } from 'ionic-angular';
 import { ModalnoticiasPage } from '../modalnoticias/modalnoticias';
 import { AngularFirestore } from 'angularfire2/firestore';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 /**
 * Generated class for the HomeinformacimPage page.
@@ -33,12 +34,22 @@ export class HomeinformacimPage {
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private provider: CadastronoticiaProvider, private toast: ToastController, private af: AngularFireDatabase,
     public modalCtrl: ModalController,
-    private db: AngularFirestore) {
+    private db: AngularFirestore,
+    private socialSharing: SocialSharing
+) {
       db.firestore.settings({ timestampsInSnapshots: true });
       this.contacts = this.provider.getAll();
       console.log(this.contacts);
     }
 
+    whatsappShare(contact){
+        this.socialSharing.shareViaWhatsApp(contact.titulo, "data:image/png;base64,R0lGODlhDAAMALMBAP8AAP///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAUKAAEALAAAAAAMAAwAQAQZMMhJK7iY4p3nlZ8XgmNlnibXdVqolmhcRQA7" , "Venha e baixe o aplicativo ACIM! link...")
+          .then(()=>{
+            console.log("WhatsApp share successful");
+          }).catch((err)=> {
+          console.log("An error occurred ", err);
+        });
+      }
 
     presentModal(dados) {
       console.log(dados);

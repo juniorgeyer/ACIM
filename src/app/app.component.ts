@@ -32,9 +32,10 @@ export class MyApp {
     private db: AngularFirestore) {
       db.firestore.settings({ timestampsInSnapshots: true });
       this.platform.ready().then(() => {
-      
+
         // Get a FCM token
-        this.fcm.getToken()
+
+      /*  this.fcm.getToken()
 
         // Listen to incoming messages
         this.fcm.listenToNotifications().pipe(
@@ -47,8 +48,8 @@ export class MyApp {
             toast.present();
           })
         )
-        .subscribe()
-        
+        .subscribe() */
+
   this.statusBar.styleDefault();
   this.splashScreen.hide();
 });
