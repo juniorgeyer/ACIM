@@ -11,6 +11,8 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { HomeinformacimPage} from '../pages/homeinformacim/homeinformacim';
 import { AngularFireModule} from 'angularfire2';
 import { AngularFireDatabaseModule} from 'angularfire2/database';
+import { SocialSharing } from '@ionic-native/social-sharing';
+
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -51,6 +53,7 @@ import { CadastronoticiaProvider } from '../providers/cadastronoticia/cadastrono
     StatusBar,
     SplashScreen,
     Camera,
+    SocialSharing,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     CadastronoticiaProvider
   ]
