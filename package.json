@@ -20,7 +20,7 @@
     "@angular/http": "5.2.11",
     "@angular/platform-browser": "5.2.11",
     "@angular/platform-browser-dynamic": "5.2.11",
-    "@ionic-native/camera": "^4.18.0",
+    "@ionic-native/camera": "^4.19.0",
     "@ionic-native/core": "~4.18.0",
     "@ionic-native/crop": "^4.18.0",
     "@ionic-native/firebase": "^4.19.0",
@@ -78,7 +78,9 @@
         "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
       },
       "cordova-plugin-ionic-keyboard": {},
-      "cordova-plugin-x-socialsharing": {},
+      "cordova-plugin-x-socialsharing": {
+        "ANDROID_SUPPORT_V4_VERSION": "24.1.1+"
+      },
       "cordova-plugin-firebase": {}
     },
     "platforms": [

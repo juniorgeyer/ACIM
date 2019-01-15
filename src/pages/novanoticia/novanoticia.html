@@ -33,7 +33,7 @@
     </ion-item>
 
     <ion-item>
-      <ion-label stacked> Texto </ion-label>
+      <ion-label stacked> Texto Para Notificação </ion-label>
       <ion-input type= "text" formControlName="texto"></ion-input>
     </ion-item>
     <ion-item *ngIf="!form.controls.texto.valid && (form.controls.texto.dirty || form.controls.texto.touched)" color="danger">
@@ -42,12 +42,22 @@
       </div>
     </ion-item>
 
+    <ion-item>
+      <ion-label stacked> Texto Completo </ion-label>
+      <ion-input type= "text" formControlName="textoCompleto"></ion-input>
+    </ion-item>
+
     <ion-item [hidden]="!!myDate">
           <ion-label>Date</ion-label>
           <ion-datetime displayFormat="DD/MM/YYYY" pickerFormat="DD/MM/YYYY" formControlName="horario"></ion-datetime>
         </ion-item>
 
-
+    <ion-item (click)="openGallery()">
+      <ion-label style="color:#999">Imagem:&nbsp; &nbsp;Escolha uma imagem</ion-label>
+    </ion-item>
+    <div *ngIf="this.contact.imagem" class="imagem">  
+      <img [src]='this.contact.imagem'/>       
+    </div>
 
     <div padding>
       <button ion-button block type="submit" [disabled]="!form.valid" (click)="onSubmit()"> Salvar </button>

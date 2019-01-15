@@ -67,7 +67,8 @@ import { Firebase } from '@ionic-native/firebase';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     CadastronoticiaProvider,
     FcmProvider,
-    Firebase
+    Firebase,
+    Camera
   ]
 })
 export class AppModule {}

@@ -4,6 +4,7 @@ import { CadastronoticiaProvider} from './../../providers/cadastronoticia/cadast
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import moment from 'moment';
 import { AngularFirestore } from 'angularfire2/firestore';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 
 /**
 * Generated class for the NovanoticiaPage page.
@@ -21,7 +22,7 @@ export class NovanoticiaPage {
   title: string;
   form: FormGroup;
   contact:any;
-
+  base64Image: string = "";
 
   constructor(
     public navCtrl: NavController,
@@ -29,7 +30,8 @@ export class NovanoticiaPage {
     private formBuilder: FormBuilder, 
     private provider: CadastronoticiaProvider,
     private toast: ToastController,
-    private db: AngularFirestore) {
+    private db: AngularFirestore,
+    private camera: Camera) {
       db.firestore.settings({ timestampsInSnapshots: true });
       this.contact = this.navParams.data.contact || {};
       this.setupPageTitle();
@@ -46,11 +48,10 @@ export class NovanoticiaPage {
       this.form = this.formBuilder.group({
         key: [this.contact.key],
         titulo: [this.contact.titulo, Validators.required],
-        imagem: [this.contact.imagem],
         texto: [this.contact.texto, Validators.required],
+        textoCompleto: [this.contact.textoCompleto],
         autor: [this.contact.autor],
         horario: [this.contact.horario]
-
       });
 
     }
@@ -59,7 +60,7 @@ export class NovanoticiaPage {
       onSubmit(){
                   
       if(this.form.valid){
-        this.provider.save(this.form.value)
+        this.provider.save(this.form.value, this.contact.imagem)
         .then(()=>{
           this.toast.create({message: 'Noticia adicionada com sucesso.', duration:3000}).present();
           this.navCtrl.pop();
@@ -70,4 +71,22 @@ export class NovanoticiaPage {
         });
       }
     }
+
+    
+  openGallery(){
+    const options: CameraOptions = {
+      quality: 100,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE,
+      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY
+    }
+
+    this.camera.getPicture(options).then((imageData) =>{
+      this.contact.imagem = 'data:image/jpeg;base64,'+imageData;
+      console.log(this.contact.imagem);
+    },(err) =>{
+      console.log(err);
+    });
+  }
   }

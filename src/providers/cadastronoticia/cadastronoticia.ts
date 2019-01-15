@@ -42,7 +42,7 @@ export class CadastronoticiaProvider {
     })
    }
 
-  save(contact:any){
+  save(contact:any, imagem: any){
       return new Promise((resolve,reject) =>{
         /*if (contact.key){
               this.db.list(this.PATH)
@@ -67,8 +67,9 @@ export class CadastronoticiaProvider {
           this.afs.doc<any>(this.PATH+contact.titulo)
           .set({
             titulo: contact.titulo,
-            imagem: contact.imagem,
+            imagem: imagem,
             texto: contact.texto,
+            textoCompleto: contact.textoCompleto,
             autor: contact.autor,
             horario: contact.horario
           });
