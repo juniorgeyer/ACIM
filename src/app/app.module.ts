@@ -19,9 +19,12 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { CadastronoticiaProvider } from '../providers/cadastronoticia/cadastronoticia';
 import { NovanoticiaPage } from '../pages/novanoticia/novanoticia';
+import { NovaagendaPage } from '../pages/novaagenda/novaagenda';
+
 import { AgendacimPage } from '../pages/agendacim/agendacim';
 import { FcmProvider } from '../providers/fcm/fcm';
 import { Firebase } from '@ionic-native/firebase';
+import { CadastroagendaProvider } from '../providers/cadastroagenda/cadastroagenda';
 
 @NgModule({
   declarations: [
@@ -68,7 +71,8 @@ import { Firebase } from '@ionic-native/firebase';
     CadastronoticiaProvider,
     FcmProvider,
     Firebase,
-    Camera
+    Camera,
+    CadastroagendaProvider
   ]
 })
 export class AppModule {}

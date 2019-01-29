@@ -1,4 +1,3 @@
-
 <ion-header >
 
   <ion-navbar color="primary">
@@ -10,30 +9,26 @@
 
 <ion-content padding>
   <ion-list>
-
-    <h1>  Janeiro </h1>
-    <ion-item (click)="presentModal('Reunião ACIM')">07 - Reunião ACIM</ion-item>
-    <ion-item (click)="presentModal('Primeiro Curso')">13 - Primeiro Curso</ion-item>
-    <ion-item (click)="presentModal('Evento de posse')">21 - Evento de posse da ACIM para a comunidade</ion-item>
-
-    <h1>  Fevereiro </h1>
-    <ion-item (click)="presentModal('Reunião ACIM')">09 - Segunda Reunião ACIM</ion-item>
-    <ion-item (click)="presentModal('Primeiro Curso')">13 - Segundo Curso</ion-item>
-    <ion-item (click)="presentModal('Evento de posse')">21 - Evento de caridade ACIM</ion-item>
-    <ion-item (click)="presentModal('Reunião ACIM')">22 - Café com consultores</ion-item>
-    <ion-item (click)="presentModal('Primeiro Curso')">13 - Segundo Curso</ion-item>
-    <ion-item (click)="presentModal('Evento de posse')">21 - Evento de caridade ACIM</ion-item>
-
-    <h1>  Março </h1>
-    <ion-item (click)="presentModal('Reunião ACIM')">07 - Reunião ACIM</ion-item>
-    <ion-item (click)="presentModal('Primeiro Curso')">13 - Primeiro Curso</ion-item>
-    <ion-item (click)="presentModal('Evento de posse')">21 - Evento de posse da ACIM para a comunidade</ion-item>
-
-    <h1>  Abril </h1>
-    <ion-item (click)="presentModal('Reunião ACIM')">07 - Reunião ACIM</ion-item>
-    <ion-item (click)="presentModal('Primeiro Curso')">13 - Primeiro Curso</ion-item>
-    <ion-item (click)="presentModal('Evento de posse')">21 - Evento de posse da ACIM para a comunidade</ion-item>
+      <h1>  Janeiro </h1>
+    <div *ngFor= "let contact of (contacts | async)?.slice().reverse()">
+    <ion-item *ngIf="contact.mes=='01'" (click)="presentModal(contact)">{{contact.dia+ " - "+contact.titulo}}</ion-item>
+</div>
   </ion-list>
 
-  
+  <ion-list>
+      <h1>  Fevereiro </h1>
+    <div *ngFor= "let contact of (contacts | async)?.slice().reverse()">
+    <ion-item *ngIf="contact.mes=='02'" (click)="presentModal(contact)">{{contact.dia+ " - "+contact.titulo}}</ion-item>
+</div>
+  </ion-list>
+
+  <ion-list>
+      <h1>  Março </h1>
+    <div *ngFor= "let contact of (contacts | async)?.slice().reverse()">
+    <ion-item *ngIf="contact.mes=='03'" (click)="presentModal(contact)">{{contact.dia+ " - "+contact.titulo}}</ion-item>
+</div>
+  </ion-list>
+    <ion-fab bottom right>
+      <button ion-fab color="primary" (click)="newNoticia()">Button</button>
+    </ion-fab>
 </ion-content>
