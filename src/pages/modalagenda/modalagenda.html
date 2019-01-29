@@ -8,7 +8,7 @@
 <ion-header >
 
   <ion-navbar color="primary">
-    <ion-title style="text-align: center">{{title}}</ion-title>
+    <ion-title style="text-align: center">{{crit.titulo}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -17,17 +17,17 @@
 
 <ion-content padding>
   <h3 style="color: #488aff"> Descrição do evento </h3>
-   <p> O evento irá  </p>
+   <p> {{crit.descricao}}  </p>
 
    <h3 style="color: #488aff"> Duração do evento </h3>
-    <p> O evento irá acontecer na data XX/MM/YYYY </p>
+    <p> O evento irá acontecer na data {{crit.data}} </p>
 
   <h3 style="color: #488aff"> Localização do evento </h3>
-     <p> O evento irá acontecer na data XX/MM/YYYY </p>
+     <p> O evento irá acontecer em {{crit.localizacao}} </p>
 
-     <h3 style="color: #488aff"> Descrição do evento </h3>
-      <p> O evento irá acontecer na data XX/MM/YYYY </p>
-      <img src="assets/imgs/google-maps.jpg"/>
+     <h3 style="color: #488aff"> Valor do evento </h3>
+      <p> O evento irá custar: {{crit.valor}} </p>
+      <img src="{{crit.imagem}}"/>
 
 
  <ion-col width-50 style="text-align: right">
