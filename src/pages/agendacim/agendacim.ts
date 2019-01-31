@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ModalController } from 'ionic-angular';
 import { ModalagendaPage } from '../modalagenda/modalagenda';
-import { NovaagendaPage } from '../pages/novaagenda/novaagenda';
+import { NovaagendaPage } from '../novaagenda/novaagenda';
 import { CadastroagendaProvider } from '../../providers/cadastroagenda/cadastroagenda';
 import {Observable} from 'rxjs';
 import 'rxjs/add/operator/map';
@@ -42,7 +42,7 @@ export class AgendacimPage {
    }
 
    newNoticia(){
-     this.navCtrl.push('NovaagendaPage');
+     this.navCtrl.push(NovaagendaPage);
 
    }
 }

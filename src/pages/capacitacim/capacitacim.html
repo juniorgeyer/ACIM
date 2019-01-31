@@ -1,0 +1,55 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title style="text-align: center">Capacitacim</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ion-list>
+    <ion-card *ngFor="let curso of (cursos | async)?.slice().reverse()">
+
+      <ion-item>
+        <ion-avatar item-start>
+          <img src="assets/imgs/acim.jpg" />
+        </ion-avatar>
+        <h2>{{curso.ministrante}}</h2>
+
+        <p>{{curso.horario}}</p>
+      </ion-item>
+
+      <img src="{{curso.imagem}}" />
+
+      <ion-card-content>
+        <div id="div1">{{curso.titulo}}</div>
+      </ion-card-content>
+
+      <ion-row>
+        <ion-col>
+          <button ion-button icon-start clear small >
+            <ion-icon name="more"></ion-icon>
+            <div>Ler mais</div>
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button icon-start clear small>
+            <ion-icon name="share"></ion-icon>
+            <div>Compartilhar</div>
+          </button>
+        </ion-col>
+
+      </ion-row>
+
+    </ion-card>
+  </ion-list>
+
+  <ion-fab bottom right>
+    <button ion-fab color="primary" (click)="novoCurso()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+
+</ion-content>

@@ -19,6 +19,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
   templateUrl: 'novanoticia.html',
 })
 export class NovanoticiaPage {
+  
   title: string;
   form: FormGroup;
   contact:any;
