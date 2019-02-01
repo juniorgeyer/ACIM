@@ -39,8 +39,6 @@ export class HomeinformacimPage {
 ) {
       db.firestore.settings({ timestampsInSnapshots: true });
       this.contacts = this.provider.getAll();
-      console.log(this.contacts);
-
     }
 
     whatsappShare(contact){

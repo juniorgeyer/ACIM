@@ -42,7 +42,8 @@ export class NovocursoPage {
       localizacao: [this.curso.localizacao, Validators.required],
       valor: [this.curso.valor, Validators.required],
       horario: [this.curso.horario, Validators.required],
-      imagem: [this.curso.imagem, Validators.required]
+      link: [this.curso.horario, Validators.required],
+      imagem: [this.curso.imagem]
     });
 
   }
@@ -55,14 +56,6 @@ export class NovocursoPage {
     if (this.form.valid) {
       console.log(this.form.value);
       this.provider.save(this.form.value)
-        .then(() => {
-          this.toast.create({ message: 'Curso adicionado com sucesso.', duration: 3000 }).present();
-          this.navCtrl.pop();
-        })
-        .catch((e) => {
-          this.toast.create({ message: 'Falha ao adicionar.', duration: 3000 }).present();
-          console.error(e);
-        });
     }
   }
 
@@ -84,6 +77,10 @@ export class NovocursoPage {
     }, (err) => {
       console.log("Erro");
     });
+  }
+
+  limpaCampos(){
+
   }
 
 }

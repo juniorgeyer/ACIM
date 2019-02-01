@@ -34,7 +34,7 @@ export class MyApp {
       this.platform.ready().then(() => {
 
         // Get a FCM token
-
+        
       /*  this.fcm.getToken()
 
         // Listen to incoming messages
@@ -66,5 +66,9 @@ export class MyApp {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
+  }
+
+  chamaAgendAcim(selectedTab){
+    this.nav.push(TabsPage, {selectedTab:selectedTab});
   }
 }

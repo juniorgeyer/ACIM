@@ -1,0 +1,22 @@
+page-modalcurso {
+    img{
+        width: 100% !important;
+      }
+    
+        ion-card-content{
+          background-color: #eeeeee;
+        }
+            
+        .float-ion-button{
+          float: left;
+      }
+    
+      .fullWidth{
+          width: 100%;
+          text-align: center !important;
+          color: white;
+      }
+      .toolbar-title-md {
+        padding: 5px;
+      }
+}

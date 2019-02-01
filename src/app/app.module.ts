@@ -28,6 +28,7 @@ import { CapacitacimPage } from '../pages/capacitacim/capacitacim';
 import { NovaagendaPage } from '../pages/novaagenda/novaagenda';
 import { NovocursoPage } from '../pages/novocurso/novocurso';
 import { CadastrocursoProvider } from '../providers/cadastrocurso/cadastrocurso';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 @NgModule({
   declarations: [
@@ -82,7 +83,8 @@ import { CadastrocursoProvider } from '../providers/cadastrocurso/cadastrocurso'
     Firebase,
     Camera,
     CadastroagendaProvider,
-    CadastrocursoProvider
+    CadastrocursoProvider,
+    InAppBrowser
   ]
 })
 export class AppModule {}

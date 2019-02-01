@@ -1,0 +1,30 @@
+<ion-header>
+
+  <ion-navbar color="dark">
+    <ion-buttons begin class="float-ion-button">
+      <button ion-button icon-only class="fullWidth" (click)="fechar()">
+        <ion-icon name="arrow-round-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title style="color: white;">{{curso.titulo}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content style="background-color: #eeeeee">
+  <ion-card-content>
+    <img src="{{curso.imagem}}" />
+    <h6><b>Local: &nbsp;</b>{{curso.localizacao}}</h6>
+    <p style="font-size:medium">{{curso.descricao}}</p>
+    <h6><b>Autor: &nbsp;</b> {{curso.ministrante}}</h6>
+    <h6><b>Valor: &nbsp;</b> {{curso.valor}}</h6>
+    <h6>
+      <a *ngIf="curso.link != 'undefined' && curso.link != '' && curso.link != null" (click)="abrirLink()">Link de
+        inscrição</a>
+    </h6>
+  </ion-card-content>
+  <button ion-button color="whatsapp" full (click)="whatsappShare(curso)">
+    Enviar pelo WhatsApp
+  </button>
+</ion-content>

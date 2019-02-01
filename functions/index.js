@@ -17,7 +17,8 @@ exports.pushNotification = functions.firestore
     const payload = {
       notification: {
           title: titulo,
-          body: texto
+          body: texto,
+          click_action: 'FCM_PLUGIN_ACTIVITY'
       }
     }
 

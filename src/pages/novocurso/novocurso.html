@@ -9,7 +9,7 @@
 
 <ion-content padding>
 
-  <form [formGroup]="form">
+  <form #cursoForm="ngForm" [formGroup]="form" (submit)="onSubmit(); cursoForm.reset(); curso.imagem = '';">
 
     <ion-item>
       <ion-label stacked> Nome do curso </ion-label>
@@ -22,7 +22,7 @@
     </ion-item>
 
     <ion-item>
-      <ion-label stacked> Descrição do Evento </ion-label>
+      <ion-label stacked> Descrição do Curso </ion-label>
       <ion-input type="text" formControlName="descricao"></ion-input>
     </ion-item>
     <ion-item *ngIf="!form.controls.descricao.valid && (form.controls.descricao.dirty || form.controls.descricao.touched)"
@@ -65,7 +65,7 @@
     </ion-item>
 
     <ion-item>
-      <ion-label stacked> Horário do Evento </ion-label>
+      <ion-label stacked> Horário do Curso </ion-label>
       <ion-input type="text" formControlName="horario"></ion-input>
     </ion-item>
     <ion-item *ngIf="!form.controls.horario.valid && (form.controls.horario.dirty || form.controls.horario.touched)"
@@ -76,10 +76,20 @@
     </ion-item>
 
     <ion-item>
-      <ion-label stacked> Valor do Evento </ion-label>
+      <ion-label stacked> Valor do Curso </ion-label>
       <ion-input type="text" formControlName="valor"></ion-input>
     </ion-item>
     <ion-item *ngIf="!form.controls.valor.valid && (form.controls.valor.dirty || form.controls.valor.touched)" color="danger">
+      <div>
+        O campo é obrigatório
+      </div>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked> Link Para Inscrição </ion-label>
+      <ion-input type="text" formControlName="link"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="!form.controls.link.valid && (form.controls.link.dirty || form.controls.link.touched)" color="danger">
       <div>
         O campo é obrigatório
       </div>
@@ -89,17 +99,13 @@
       <ion-label style="color:#999" stacked>Imagem:&nbsp; &nbsp;Escolha uma imagem</ion-label>
       <ion-input style="visibility: hidden;" formControlName="imagem" value="{{this.curso.imagem}}"></ion-input>
     </ion-item>
-    <ion-item *ngIf="!form.controls.imagem.valid && (form.controls.imagem.dirty || form.controls.imagem.touched)" color="danger">
-      <div>
-        O campo é obrigatório
-      </div>
-    </ion-item>
+
     <div *ngIf="this.curso.imagem" class="imagem">
       <img [src]='this.curso.imagem' />
     </div>
 
     <div padding>
-      <button ion-button block type="submit" [disabled]="!form.valid" (click)="onSubmit()"> Salvar </button>
+      <button ion-button block type="submit" [disabled]="!form.valid"> Salvar </button>
     </div>
 
   </form>

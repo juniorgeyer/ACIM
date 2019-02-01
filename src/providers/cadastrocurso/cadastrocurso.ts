@@ -1,6 +1,7 @@
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from 'angularfire2/firestore';
+import { ToastController } from 'ionic-angular';
 
 @Injectable()
 export class CadastrocursoProvider {
@@ -9,7 +10,9 @@ export class CadastrocursoProvider {
 
   constructor(
     private db: AngularFireDatabase,
-    private afs: AngularFirestore) {
+    private afs: AngularFirestore,
+    private toast: ToastController,
+    ) {
   }
 
   /*
@@ -53,34 +56,26 @@ export class CadastrocursoProvider {
       var dia = dividir_crit[2];
       var mes = dividir_crit[1];
 
-      console.log(mes);
-      if (mes == "01") {
-        var horario = dia + " de " + "Janeiro" + " de " + ano;
-      }
-      else if (mes == "02") {
-        var horario = dia + " de " + "Fevereiro" + " de " + ano;
-      } else if (mes == "03") {
-        var horario = dia + " de " + "Março" + " de " + ano;
-      } else if (mes == "04") {
-        var horario = dia + " de " + "Abril" + " de " + ano;
-      } else if (mes == "05") {
-        var horario = dia + " de " + "Maio" + " de " + ano;
-      } else if (mes == "06") {
-        var horario = dia + " de " + "Junho" + " de " + ano;
-      } else if (mes == "07") {
-        var horario = dia + " de " + "Julho" + " de " + ano;
-      } else if (mes == "08") {
-        var horario = dia + " de " + "Agosto" + " de " + ano;
-      } else if (mes == "09") {
-        var horario = dia + " de " + "Setembro" + " de " + ano;
-      } else if (mes == "10") {
-        var horario = dia + " de " + "Outubro" + " de " + ano;
-      } else if (mes == "11") {
-        var horario = dia + " de " + "Novembro" + " de " + ano;
-      } else if (mes == "12") {
-        var horario = dia + " de " + "Dezembro" + " de " + ano;
-      }
+      var meses = [
+        "Janeiro",
+        "Fevereiro",
+        "Março",
+        "Abril",
+        "Maio",
+        "Junho",
+        "Julho",
+        "Agosto",
+        "Setembro",
+        "Outubro",
+        "Novembro",
+        "Dezembro"
+      ];
 
+      mes = +mes;
+      mes = meses[mes-1];
+      console.log(mes);
+
+      var horario = dia + " de " + mes + " de " + ano;
 
       this.afs.doc<any>(this.PATH + curso.titulo)
         .set({
@@ -92,10 +87,15 @@ export class CadastrocursoProvider {
           ministrante: curso.ministrante,
           localizacao: curso.localizacao,
           horario: curso.horario,
+          link: curso.link,
           valor: curso.valor,
           dia: dia,
           mes: mes
-        });
+        }).catch(()=>{
+          this.toast.create({ message: 'Problema ao adicionar o curso.', duration: 3000 }).present();
+        }).then(() =>{
+          this.toast.create({ message: 'Curso adicionado com sucesso.', duration: 3000 }).present();
+        })
     });
   }
 

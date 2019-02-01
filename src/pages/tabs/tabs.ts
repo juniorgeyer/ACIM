@@ -22,7 +22,10 @@ export class TabsPage {
     tab4Root = AgendacimPage;
     myIndex: number;
 
-  constructor() {
-    console.log("Tabs")
+  constructor(
+    public navParams: NavParams
+  ) {
+    this.navParams.get('selectedTab') != undefined ? this.myIndex = this.navParams.get('selectedTab') : this.myIndex = 0;
+    console.log(this.myIndex);
   }
 }

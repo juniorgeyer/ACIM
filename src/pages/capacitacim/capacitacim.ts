@@ -11,6 +11,7 @@ import { AngularFirestore } from 'angularfire2/firestore';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { NovocursoPage } from '../novocurso/novocurso';
 import { CadastrocursoProvider } from '../../providers/cadastrocurso/cadastrocurso';
+import { ModalcursoPage } from '../modalcurso/modalcurso';
 
 
 @IonicPage()
@@ -47,18 +48,17 @@ export class CapacitacimPage {
         });
       }
 
-    /*presentModal(dados) {
-      console.log(dados);
-      const modal = this.modalCtrl.create('ModalnoticiasPage',{"noticia":dados});
+    presentModal(curso) {
+      const modal = this.modalCtrl.create('ModalcursoPage',{curso:curso});
       modal.present();
-    }*/
+    }
 
     novoCurso(){
       this.navCtrl.push(NovocursoPage);
     }
 
-    editContact(contact:any){
-      this.navCtrl.push('NovanoticiaPage', { contact: contact});
+    editContact(curso:any){
+      this.navCtrl.push('ModalcursoPage', { curso: curso});
     }
 
     removeContact(key: string){

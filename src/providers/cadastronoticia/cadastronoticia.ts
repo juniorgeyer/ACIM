@@ -66,7 +66,7 @@ export class CadastronoticiaProvider {
 
 
           var dividir_crit = contact.horario.split("-");
-
+            
           var ano = dividir_crit[0];
           var dia = dividir_crit[2];
           var mes = dividir_crit[1];
