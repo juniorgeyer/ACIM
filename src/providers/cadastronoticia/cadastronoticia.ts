@@ -1,6 +1,7 @@
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from 'angularfire2/firestore';
+import { ToastController } from 'ionic-angular';
 
 @Injectable()
 export class CadastronoticiaProvider {
@@ -9,7 +10,8 @@ export class CadastronoticiaProvider {
 
   constructor(
     private db: AngularFireDatabase,
-    private afs: AngularFirestore
+    private afs: AngularFirestore,
+    private toast: ToastController
   ) {}
 
   getAll(){
@@ -33,16 +35,10 @@ export class CadastronoticiaProvider {
    }
 
   get(key:string){
-    var data:any = "";
-    return this.db.object(this.PATH+ key)
-    .snapshotChanges()
-    //.orderByChild('texto')
-    .map(c=> {
-      return { key: c.key, ...c.payload.val()};
-    })
+    return this.afs.collection("noticias").doc(key).ref.get();
    }
 
-  save(contact:any, imagem: any){
+  save(contact:any){
       return new Promise((resolve,reject) =>{
         /*if (contact.key){
               this.db.list(this.PATH)
@@ -102,11 +98,15 @@ export class CadastronoticiaProvider {
           this.afs.doc<any>(this.PATH+contact.titulo)
           .set({
             titulo: contact.titulo,
-            imagem: imagem,
+            imagem: contact.imagem,
             texto: contact.texto,
             textoCompleto: contact.textoCompleto,
             autor: contact.autor,
             horario: horario
+          }).catch(()=>{
+            this.toast.create({ message: 'Falha ao adicionar.', duration: 3000 }).present();
+          }).then(() =>{
+            this.toast.create({ message: 'Notícia adicionada com sucesso.', duration: 3000 }).present();
           });
         });
   }

@@ -10,14 +10,14 @@
 
 <ion-content padding>
 
-  <form [formGroup]="form">
+  <form #noticiaForm="ngForm" [formGroup]="form" (submit)="onSubmit(); noticiaForm.reset(); contact.imagem = '';">
 
     <ion-item>
       <ion-label stacked> Autor </ion-label>
       <ion-input type= "text" formControlName="autor"></ion-input>
     </ion-item>
     <ion-item *ngIf="!form.controls.autor.valid && (form.controls.autor.dirty || form.controls.autor.touched)" color="danger">
-      <div [hidden]="!form.controls.autor.erros.required">
+      <div>
         O campo é obrigatório
       </div>
     </ion-item>
@@ -27,7 +27,7 @@
       <ion-input type= "text" formControlName="titulo"></ion-input>
     </ion-item>
     <ion-item *ngIf="!form.controls.titulo.valid && (form.controls.titulo.dirty || form.controls.titulo.touched)" color="danger">
-      <div [hidden]="!form.controls.titulo.erros.required">
+      <div>
         O campo é obrigatório
       </div>
     </ion-item>
@@ -37,7 +37,7 @@
       <ion-input type= "text" formControlName="texto"></ion-input>
     </ion-item>
     <ion-item *ngIf="!form.controls.texto.valid && (form.controls.texto.dirty || form.controls.texto.touched)" color="danger">
-      <div [hidden]="!form.controls.texto.erros.required">
+      <div>
         O campo é obrigatório
       </div>
     </ion-item>
@@ -52,15 +52,17 @@
           <ion-datetime displayFormat="DD/MM/YYYY" pickerFormat="DD/MM/YYYY" formControlName="horario"></ion-datetime>
         </ion-item>
 
-    <ion-item (click)="openGallery()">
-      <ion-label style="color:#999">Imagem:&nbsp; &nbsp;Escolha uma imagem</ion-label>
-    </ion-item>
-    <div *ngIf="this.contact.imagem" class="imagem">  
-      <img [src]='this.contact.imagem'/>       
-    </div>
+        <ion-item (click)="openGallery()">
+          <ion-label style="color:#999" stacked>Imagem:&nbsp; &nbsp;Escolha uma imagem</ion-label>
+          <ion-input style="visibility: hidden;" formControlName="imagem" value="{{this.contact.imagem}}"></ion-input>
+        </ion-item>
+    
+        <div *ngIf="this.contact.imagem" class="imagem">
+          <img [src]='this.contact.imagem' />
+        </div>
 
     <div padding>
-      <button ion-button block type="submit" [disabled]="!form.valid" (click)="onSubmit()"> Salvar </button>
+      <button ion-button block type="submit" [disabled]="!form.valid"> Salvar </button>
       </div>
 
   </form>

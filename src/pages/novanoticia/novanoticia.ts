@@ -52,22 +52,22 @@ export class NovanoticiaPage {
         texto: [this.contact.texto, Validators.required],
         textoCompleto: [this.contact.textoCompleto],
         autor: [this.contact.autor],
-        horario: [this.contact.horario]
+        horario: [this.contact.horario],
+        imagem: [this.contact.imagem]
       });
 
     }
 
-
       onSubmit(){
                   
       if(this.form.valid){
-        this.provider.save(this.form.value, this.contact.imagem)
+        this.provider.save(this.form.value)
         .then(()=>{
-          this.toast.create({message: 'Noticia adicionada com sucesso.', duration:3000}).present();
+          //this.toast.create({message: 'Noticia adicionada com sucesso.', duration:3000}).present();
           this.navCtrl.pop();
         })
         .catch((e)=>{
-          this.toast.create({message: 'Falha ao adicionar.', duration:3000}).present();
+          //this.toast.create({message: 'Falha ao adicionar.', duration:3000}).present();
           console.error(e);
         });
       }

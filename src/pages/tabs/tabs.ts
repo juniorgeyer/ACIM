@@ -26,6 +26,5 @@ export class TabsPage {
     public navParams: NavParams
   ) {
     this.navParams.get('selectedTab') != undefined ? this.myIndex = this.navParams.get('selectedTab') : this.myIndex = 0;
-    console.log(this.myIndex);
   }
 }

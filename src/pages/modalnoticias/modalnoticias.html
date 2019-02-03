@@ -4,9 +4,9 @@
         <ion-buttons begin class="float-ion-button">
             <button ion-button icon-only class="fullWidth" (click)="fechar()">
                 <ion-icon name="arrow-round-back"></ion-icon>
+                <label style="color: white; white-space: normal; font-size: 1.6rem">{{contacts.titulo}}</label>
             </button>
         </ion-buttons>
-        <ion-title style="color: white;">{{contacts.titulo}}</ion-title>
     </ion-navbar>
 
 </ion-header>
@@ -17,7 +17,7 @@
 
     <ion-card-content>
         <h6><b>Data: &nbsp;</b>{{contacts.horario}}</h6>
-        <p style="font-size:medium">{{contacts.texto}}</p>
+        <p style="font-size:medium; text-align: justify">{{contacts.texto}}</p>
 
         <h6><b>Autor: &nbsp;</b>{{contacts.autor}}</h6>
 

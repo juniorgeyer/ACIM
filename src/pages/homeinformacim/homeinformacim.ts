@@ -11,6 +11,8 @@ import { ModalController } from 'ionic-angular';
 import { ModalnoticiasPage } from '../modalnoticias/modalnoticias';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { SocialSharing } from '@ionic-native/social-sharing';
+import { NotificacoesProvider } from '../../providers/notificacoes/notificacoes';
+
 
 /**
 * Generated class for the HomeinformacimPage page.
@@ -31,15 +33,20 @@ export class HomeinformacimPage {
 
   posts: Observable<any>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,
-    private provider: CadastronoticiaProvider, private toast: ToastController, private af: AngularFireDatabase,
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private provider: CadastronoticiaProvider,
+    private toast: ToastController, 
+    private af: AngularFireDatabase,
     public modalCtrl: ModalController,
     private db: AngularFirestore,
-    private socialSharing: SocialSharing
-) {
+    private socialSharing: SocialSharing,
+    private tipoNotificacao: NotificacoesProvider
+  ) {
       db.firestore.settings({ timestampsInSnapshots: true });
       this.contacts = this.provider.getAll();
-    }
+  }
 
     whatsappShare(contact){
         this.socialSharing.shareViaWhatsApp(contact.titulo, "data:image/png;base64,R0lGODlhDAAMALMBAP8AAP///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAUKAAEALAAAAAAMAAwAQAQZMMhJK7iY4p3nlZ8XgmNlnibXdVqolmhcRQA7" , "Venha e baixe o aplicativo ACIM! link...")
@@ -51,13 +58,12 @@ export class HomeinformacimPage {
       }
 
     presentModal(dados) {
-      console.log(dados);
       const modal = this.modalCtrl.create('ModalnoticiasPage',{"noticia":dados});
       modal.present();
     }
 
     newNoticia(){
-      this.navCtrl.push('NovanoticiaPage');
+      this.navCtrl.push(NovanoticiaPage);
     }
 
     editContact(contact:any){

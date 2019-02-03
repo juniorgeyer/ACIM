@@ -29,6 +29,8 @@ import { NovaagendaPage } from '../pages/novaagenda/novaagenda';
 import { NovocursoPage } from '../pages/novocurso/novocurso';
 import { CadastrocursoProvider } from '../providers/cadastrocurso/cadastrocurso';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import { NotificacoesProvider } from '../providers/notificacoes/notificacoes';
+import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
   declarations: [
@@ -46,6 +48,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot(),
     AngularFireModule.initializeApp({
    apiKey: "AIzaSyCfAexNlYuNCCiseiRzrqiGv-RelNmN7Qc",
    authDomain: "acim-72c9b.firebaseapp.com",
@@ -84,7 +87,8 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
     Camera,
     CadastroagendaProvider,
     CadastrocursoProvider,
-    InAppBrowser
+    InAppBrowser,
+    NotificacoesProvider
   ]
 })
 export class AppModule {}

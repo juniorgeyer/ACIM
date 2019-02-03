@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { Nav, Platform, ModalController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { TabsPage } from '../pages/tabs/tabs';
@@ -13,6 +13,10 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { HomeinformacimPage } from '../pages/homeinformacim/homeinformacim';
 import { AngularFirestore } from 'angularfire2/firestore';
+import { AgendacimPage } from '../pages/agendacim/agendacim';
+import { NotificacoesProvider } from '../providers/notificacoes/notificacoes';
+import { CadastronoticiaProvider } from '../providers/cadastronoticia/cadastronoticia';
+import { ModalnoticiasPage } from '../pages/modalnoticias/modalnoticias';
 
 @Component({
   templateUrl: 'app.html'
@@ -29,7 +33,11 @@ export class MyApp {
     public splashScreen: SplashScreen,
     private fcm: FcmProvider,
     private toastCtrl: ToastController,
-    private db: AngularFirestore) {
+    private db: AngularFirestore,
+    private tipoNotificacao: NotificacoesProvider,
+    private provider: CadastronoticiaProvider,
+    public modalCtrl: ModalController
+  ) {
       db.firestore.settings({ timestampsInSnapshots: true });
       this.platform.ready().then(() => {
 
@@ -48,7 +56,24 @@ export class MyApp {
             toast.present();
           })
         )
-        .subscribe() */
+        .subscribe() 
+        this.fcm.getToken()
+        this.fcm.listenToNotifications().pipe(
+        tap(data => {
+          if(data.tap == true){
+            if (data.acao == "novaNoticia") {
+              this.provider.get(data.titulo).then(dados=>{
+                const modal = this.modalCtrl.create('ModalnoticiasPage',{"noticia":dados.data()});
+                modal.present();
+              });
+            }
+            //this.tipoNotificacao.create(data.title)
+            //this.nav.push(TabsPage, {selectedTab: paginaNotificacao});
+          }
+      })
+      )
+      .subscribe()*/
+      
 
   this.statusBar.styleDefault();
   this.splashScreen.hide();
@@ -59,7 +84,6 @@ export class MyApp {
       { title: 'Home', component: HomePage },
       { title: 'List', component: ListPage }
     ];*/
-
   }
 
   openPage(page) {
