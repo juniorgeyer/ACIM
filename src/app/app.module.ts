@@ -29,7 +29,6 @@ import { NovaagendaPage } from '../pages/novaagenda/novaagenda';
 import { NovocursoPage } from '../pages/novocurso/novocurso';
 import { CadastrocursoProvider } from '../providers/cadastrocurso/cadastrocurso';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
-import { NotificacoesProvider } from '../providers/notificacoes/notificacoes';
 
 @NgModule({
   declarations: [
@@ -85,8 +84,7 @@ import { NotificacoesProvider } from '../providers/notificacoes/notificacoes';
     Camera,
     CadastroagendaProvider,
     CadastrocursoProvider,
-    InAppBrowser,
-    NotificacoesProvider
+    InAppBrowser
   ]
 })
 export class AppModule {}

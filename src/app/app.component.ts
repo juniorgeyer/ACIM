@@ -14,7 +14,6 @@ import { ListPage } from '../pages/list/list';
 import { HomeinformacimPage } from '../pages/homeinformacim/homeinformacim';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { AgendacimPage } from '../pages/agendacim/agendacim';
-import { NotificacoesProvider } from '../providers/notificacoes/notificacoes';
 import { CadastronoticiaProvider } from '../providers/cadastronoticia/cadastronoticia';
 import { ModalnoticiasPage } from '../pages/modalnoticias/modalnoticias';
 import { CadastrocursoProvider } from '../providers/cadastrocurso/cadastrocurso';
@@ -36,7 +35,6 @@ export class MyApp {
     private fcm: FcmProvider,
     private toastCtrl: ToastController,
     private db: AngularFirestore,
-    private tipoNotificacao: NotificacoesProvider,
     private provider: CadastronoticiaProvider,
     private providerCursos: CadastrocursoProvider,
     public modalCtrl: ModalController

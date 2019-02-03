@@ -11,8 +11,6 @@ import { ModalController } from 'ionic-angular';
 import { ModalnoticiasPage } from '../modalnoticias/modalnoticias';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { SocialSharing } from '@ionic-native/social-sharing';
-import { NotificacoesProvider } from '../../providers/notificacoes/notificacoes';
-
 
 /**
 * Generated class for the HomeinformacimPage page.
@@ -41,8 +39,7 @@ export class HomeinformacimPage {
     private af: AngularFireDatabase,
     public modalCtrl: ModalController,
     private db: AngularFirestore,
-    private socialSharing: SocialSharing,
-    private tipoNotificacao: NotificacoesProvider
+    private socialSharing: SocialSharing
   ) {
       db.firestore.settings({ timestampsInSnapshots: true });
       this.contacts = this.provider.getAll();
