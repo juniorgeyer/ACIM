@@ -34,13 +34,7 @@ export class CadastrocursoProvider {
   * Função para retornar um curso cadastrado (o curso a ser retornado será passado em "key")
   */
   get(key: string) {
-    var data: any = "";
-    return this.db.object(this.PATH + key)
-      .snapshotChanges()
-      //.orderByChild('texto')
-      .map(c => {
-        return { key: c.key, ...c.payload.val() };
-      })
+    return this.afs.collection("cursos").doc(key).ref.get();
   }
 
   /*

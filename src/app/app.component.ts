@@ -17,6 +17,8 @@ import { AgendacimPage } from '../pages/agendacim/agendacim';
 import { NotificacoesProvider } from '../providers/notificacoes/notificacoes';
 import { CadastronoticiaProvider } from '../providers/cadastronoticia/cadastronoticia';
 import { ModalnoticiasPage } from '../pages/modalnoticias/modalnoticias';
+import { CadastrocursoProvider } from '../providers/cadastrocurso/cadastrocurso';
+import { ModalcursoPage } from '../pages/modalcurso/modalcurso';
 
 @Component({
   templateUrl: 'app.html'
@@ -36,11 +38,11 @@ export class MyApp {
     private db: AngularFirestore,
     private tipoNotificacao: NotificacoesProvider,
     private provider: CadastronoticiaProvider,
+    private providerCursos: CadastrocursoProvider,
     public modalCtrl: ModalController
   ) {
       db.firestore.settings({ timestampsInSnapshots: true });
       this.platform.ready().then(() => {
-
         // Get a FCM token
         
       /*  this.fcm.getToken()
@@ -56,7 +58,7 @@ export class MyApp {
             toast.present();
           })
         )
-        .subscribe() 
+        .subscribe()*/
         this.fcm.getToken()
         this.fcm.listenToNotifications().pipe(
         tap(data => {
@@ -66,13 +68,18 @@ export class MyApp {
                 const modal = this.modalCtrl.create('ModalnoticiasPage',{"noticia":dados.data()});
                 modal.present();
               });
+            }else if(data.acao == "novoCurso"){
+              this.providerCursos.get(data.titulo).then(dados=>{
+                const modal = this.modalCtrl.create('ModalcursoPage',{"curso":dados.data()});
+                modal.present();
+              });
             }
             //this.tipoNotificacao.create(data.title)
             //this.nav.push(TabsPage, {selectedTab: paginaNotificacao});
           }
       })
       )
-      .subscribe()*/
+      .subscribe()
       
 
   this.statusBar.styleDefault();

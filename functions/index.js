@@ -17,8 +17,11 @@ exports.pushNotification = functions.firestore
     const payload = {
       notification: {
           title: titulo,
-          body: texto,
-          click_action: 'FCM_PLUGIN_ACTIVITY'
+          body: texto
+      },
+      data: {
+      	"acao": "novaNoticia",
+        "titulo": titulo
       }
     }
 
@@ -37,15 +40,47 @@ exports.pushNotification = functions.firestore
 
         tokens.push(token);
     })
-    // send a notification to each device token
- 	/*let devicesRef = db.collection(`devices`);
-    let dev = devicesRef.get();
-    dev.then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        tokens.push(doc.data().token);
-        console.log(doc.data().token);
-      })
-       return admin.messaging().sendToDevice(tokens, payload)
-    });*/
+
+    return admin.messaging().sendToDevice(tokens, payload)
+});
+
+
+exports.pushNotificationCurso = functions.firestore
+    .document('cursos/{cursoId}')
+    .onCreate( async event => {
+        
+    const data = event.data();
+
+    const titulo = data.titulo
+    const texto = data.textoNotificacao
+
+    // Notification content
+    const payload = {
+      notification: {
+          title: titulo,
+          body: texto
+      },
+      data: {
+      	"acao": "novoCurso",
+        "titulo": titulo
+      }
+    }
+
+    // ref to the device collection for the user
+    const db = admin.firestore()
+    const devicesRef = db.collection('devices')
+
+
+    // get the user's tokens and send notifications
+    const devices = await (devicesRef.get());
+
+    const tokens = [];
+
+    devices.forEach(result => {
+        const token = result.data().token;
+
+        tokens.push(token);
+    })
+
     return admin.messaging().sendToDevice(tokens, payload)
 });
