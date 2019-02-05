@@ -55,7 +55,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
    messagingSenderId: "536686096736"
  }
     ),
-
+    AngularFirestoreModule.enablePersistence(),
     AngularFireDatabaseModule,
     AngularFirestoreModule
   ],

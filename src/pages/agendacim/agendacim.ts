@@ -43,6 +43,5 @@ export class AgendacimPage {
 
    newNoticia(){
      this.navCtrl.push(NovaagendaPage);
-
    }
 }
