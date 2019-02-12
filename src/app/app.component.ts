@@ -56,7 +56,7 @@ export class MyApp {
             toast.present();
           })
         )
-        .subscribe()*/
+        .subscribe()
         this.fcm.getToken()
         this.fcm.listenToNotifications().pipe(
         tap(data => {
@@ -77,7 +77,7 @@ export class MyApp {
           }
       })
       )
-      .subscribe()
+      .subscribe()*/
       
 
   this.statusBar.styleDefault();

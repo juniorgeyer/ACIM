@@ -23,7 +23,7 @@ export class CadastronoticiaProvider {
          key: c.payload.key, ...c.payload.val()
        }))
     })*/
-    return this.afs.collection(this.PATH, ref => ref.orderBy('horario')  )
+    return this.afs.collection(this.PATH, ref => ref.orderBy('ordenacao')  )
     .snapshotChanges().map(changes => {
       return changes.map(c => {
         const data = c.payload.doc.data() as any;
@@ -62,11 +62,12 @@ export class CadastronoticiaProvider {
 
 
           var dividir_crit = contact.horario.split("-");
-            
+          
           var ano = dividir_crit[0];
           var dia = dividir_crit[2];
           var mes = dividir_crit[1];
-
+          
+          var ordenacao = ano+mes+dia;
           if(mes=="01"){
           var horario = dia+ " de "+ "Janeiro"+ " de " + ano;
           }
@@ -101,7 +102,8 @@ export class CadastronoticiaProvider {
             imagem: contact.imagem,
             textoCompleto: contact.textoCompleto,
             autor: contact.autor,
-            horario: horario
+            horario: horario,
+            ordenacao: ordenacao
           }).catch(()=>{
             this.toast.create({ message: 'Falha ao adicionar.', duration: 3000 }).present();
           }).then(() =>{
