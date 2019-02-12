@@ -23,20 +23,9 @@
 
     <ion-item>
       <ion-label stacked> Descrição do Curso </ion-label>
-      <ion-input type="text" formControlName="descricao"></ion-input>
+      <ion-textarea autosize type="text" formControlName="descricao"></ion-textarea>
     </ion-item>
     <ion-item *ngIf="!form.controls.descricao.valid && (form.controls.descricao.dirty || form.controls.descricao.touched)"
-      color="danger">
-      <div>
-        O campo é obrigatório
-      </div>
-    </ion-item>
-
-    <ion-item>
-      <ion-label stacked> Texto Para Notificação </ion-label>
-      <ion-input type="text" formControlName="textoNotificacao"></ion-input>
-    </ion-item>
-    <ion-item *ngIf="!form.controls.textoNotificacao.valid && (form.controls.textoNotificacao.dirty || form.controls.textoNotificacao.touched)"
       color="danger">
       <div>
         O campo é obrigatório

@@ -67,7 +67,6 @@ export class CadastrocursoProvider {
 
       mes = +mes;
       mes = meses[mes-1];
-      console.log(mes);
 
       var horario = dia + " de " + mes + " de " + ano;
 
@@ -77,7 +76,6 @@ export class CadastrocursoProvider {
           imagem: curso.imagem,
           descricao: curso.descricao,
           data: horario,
-          textoNotificacao: curso.textoNotificacao,
           ministrante: curso.ministrante,
           localizacao: curso.localizacao,
           horario: curso.horario,

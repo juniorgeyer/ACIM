@@ -22,7 +22,7 @@ import { ModalcursoPage } from '../modalcurso/modalcurso';
 export class CapacitacimPage {
   cursos:any;
   items = [];
-
+  vazio = false;
   posts: Observable<any>;
 
   constructor(
@@ -37,6 +37,15 @@ export class CapacitacimPage {
 ) {
       db.firestore.settings({ timestampsInSnapshots: true });
       this.cursos = this.provider.getAll();
+
+      this.cursos.subscribe(result =>{
+        if(result.length == 0){
+          this.vazio = true;
+        }else{
+          this.vazio = false;
+        }
+      });
+
     }
 
     whatsappShare(contact){
@@ -44,9 +53,9 @@ export class CapacitacimPage {
           .then(()=>{
             console.log("WhatsApp share successful");
           }).catch((err)=> {
-          console.log("An error occurred ", err);
+            console.log("An error occurred ", err);
         });
-      }
+      } 
 
     presentModal(curso) {
       const modal = this.modalCtrl.create('ModalcursoPage',{curso:curso});

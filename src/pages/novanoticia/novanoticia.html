@@ -1,12 +1,11 @@
 
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="primary">
     <ion-title>{{title}}</ion-title>
   </ion-navbar>
 
 </ion-header>
-
 
 <ion-content padding>
 
@@ -33,18 +32,8 @@
     </ion-item>
 
     <ion-item>
-      <ion-label stacked> Texto Para Notificação </ion-label>
-      <ion-input type= "text" formControlName="texto"></ion-input>
-    </ion-item>
-    <ion-item *ngIf="!form.controls.texto.valid && (form.controls.texto.dirty || form.controls.texto.touched)" color="danger">
-      <div>
-        O campo é obrigatório
-      </div>
-    </ion-item>
-
-    <ion-item>
       <ion-label stacked> Texto Completo </ion-label>
-      <ion-input type= "text" formControlName="textoCompleto"></ion-input>
+      <ion-textarea autosize type= "text" formControlName="textoCompleto"></ion-textarea>
     </ion-item>
 
     <ion-item [hidden]="!!myDate">

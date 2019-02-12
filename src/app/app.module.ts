@@ -29,6 +29,7 @@ import { NovaagendaPage } from '../pages/novaagenda/novaagenda';
 import { NovocursoPage } from '../pages/novocurso/novocurso';
 import { CadastrocursoProvider } from '../providers/cadastrocurso/cadastrocurso';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import { Autosize} from '../directives/autosize/autosize';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
     AgendacimPage,
     CapacitacimPage,
     NovaagendaPage,
-    NovocursoPage
+    NovocursoPage,
+    Autosize
   ],
   imports: [
     BrowserModule,

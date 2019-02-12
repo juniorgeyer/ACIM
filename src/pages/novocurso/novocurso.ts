@@ -36,7 +36,6 @@ export class NovocursoPage {
       key: [this.curso.key],
       titulo: [this.curso.titulo, Validators.required],
       descricao: [this.curso.descricao, Validators.required],
-      textoNotificacao: [this.curso.textoNotificacao, Validators.required],
       ministrante: [this.curso.ministrante, Validators.required],
       data: [this.curso.data, Validators.required],
       localizacao: [this.curso.localizacao, Validators.required],
@@ -54,7 +53,6 @@ export class NovocursoPage {
   onSubmit() {
 
     if (this.form.valid) {
-      console.log(this.form.value);
       this.provider.save(this.form.value)
     }
   }

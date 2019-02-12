@@ -99,7 +99,6 @@ export class CadastronoticiaProvider {
           .set({
             titulo: contact.titulo,
             imagem: contact.imagem,
-            texto: contact.texto,
             textoCompleto: contact.textoCompleto,
             autor: contact.autor,
             horario: horario

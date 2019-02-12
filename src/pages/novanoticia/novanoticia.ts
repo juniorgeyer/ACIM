@@ -49,7 +49,6 @@ export class NovanoticiaPage {
       this.form = this.formBuilder.group({
         key: [this.contact.key],
         titulo: [this.contact.titulo, Validators.required],
-        texto: [this.contact.texto, Validators.required],
         textoCompleto: [this.contact.textoCompleto],
         autor: [this.contact.autor],
         horario: [this.contact.horario],
