@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
+import { ServiceProvider } from '../../providers/service/service';
 
 /**
  * Generated class for the EmpresasassociadasPage page.
@@ -16,26 +17,22 @@ import { HttpClient } from '@angular/common/http';
 })
 export class EmpresasassociadasPage {
   public items : Array<any> = [];
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient) {
+  users: any[];
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient,
+                public service: ServiceProvider) {
   }
 
   ionViewDidLoad() {
     this.load();
-
   }
-  load() : void
-   {
-      this.http
-      .get('https://www.acimmaraba.com.br/lerdados.php')
-      .subscribe((data : any) =>
-      {
-         console.dir(data);
-         this.items = data;
-      },
-      (error : any) =>
-      {
-         console.dir(error);
-      });
+
+  load() {
+     this.service.getData().subscribe(
+          data => this.users = data,
+          err => console.log(err)
+       );
+
    }
+
+
 }

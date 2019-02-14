@@ -34,6 +34,8 @@ import { NovocursoPage } from '../pages/novocurso/novocurso';
 import { CadastrocursoProvider } from '../providers/cadastrocurso/cadastrocurso';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { Autosize} from '../directives/autosize/autosize';
+import { ServiceProvider } from '../providers/service/service';
+
 
 @NgModule({
   declarations: [
@@ -96,7 +98,8 @@ import { Autosize} from '../directives/autosize/autosize';
     Camera,
     CadastroagendaProvider,
     CadastrocursoProvider,
-    InAppBrowser
+    InAppBrowser,
+    ServiceProvider
   ]
 })
 export class AppModule {}
