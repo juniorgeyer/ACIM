@@ -1,7 +1,6 @@
-
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="primary">
     <ion-title>{{title}}</ion-title>
   </ion-navbar>
 
@@ -10,13 +9,14 @@
 
 <ion-content padding>
 
-  <form [formGroup]="form">
+  <form #eventoForm="ngForm" [formGroup]="form" (submit)="onSubmit(); eventoForm.reset(); agenda.imagem = '';">
 
     <ion-item>
       <ion-label stacked> Título </ion-label>
-      <ion-input type= "text" formControlName="titulo"></ion-input>
+      <ion-input type="text" formControlName="titulo"></ion-input>
     </ion-item>
-    <ion-item *ngIf="!form.controls.titulo.valid && (form.controls.titulo.dirty || form.controls.titulo.touched)" color="danger">
+    <ion-item *ngIf="!form.controls.titulo.valid && (form.controls.titulo.dirty || form.controls.titulo.touched)"
+      color="danger">
       <div [hidden]="!form.controls.titulo.erros.required">
         O campo é obrigatório
       </div>
@@ -24,63 +24,60 @@
 
     <ion-item>
       <ion-label stacked> Descrição do Evento </ion-label>
-      <ion-input type= "text" formControlName="descricao"></ion-input>
+      <ion-input type="text" formControlName="descricao"></ion-input>
     </ion-item>
-    <ion-item *ngIf="!form.controls.descricao.valid && (form.controls.descricao.dirty || form.controls.descricao.touched)" color="danger">
+    <ion-item
+      *ngIf="!form.controls.descricao.valid && (form.controls.descricao.dirty || form.controls.descricao.touched)"
+      color="danger">
       <div [hidden]="!form.controls.descricao.erros.required">
         O campo é obrigatório
       </div>
     </ion-item>
 
+
     <ion-item>
-      <ion-label stacked> Texto Para Notificação </ion-label>
-      <ion-input type= "text" formControlName="textoNotificacao"></ion-input>
+      <ion-label stacked> Localização </ion-label>
+      <ion-input type="text" formControlName="localizacao"></ion-input>
     </ion-item>
-    <ion-item *ngIf="!form.controls.textoNotificacao.valid && (form.controls.textoNotificacao.dirty || form.controls.textoNotificacao.touched)" color="danger">
-      <div [hidden]="!form.controls.textoNotificacao.erros.required">
+
+    <ion-item [hidden]="!!myDate">
+      <ion-label>Data</ion-label>
+      <ion-datetime displayFormat="DD/MM/YYYY" pickerFormat="DD/MM/YYYY" formControlName="data"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked> Horário do Evento </ion-label>
+      <ion-input type="text" formControlName="horario"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="!form.controls.horario.valid && (form.controls.horario.dirty || form.controls.horario.touched)"
+      color="danger">
+      <div [hidden]="!form.controls.horario.erros.required">
         O campo é obrigatório
       </div>
     </ion-item>
 
     <ion-item>
-      <ion-label stacked> Localização </ion-label>
-      <ion-input type= "text" formControlName="localizacao"></ion-input>
+      <ion-label stacked> Valor do Evento </ion-label>
+      <ion-input type="text" formControlName="valor"></ion-input>
     </ion-item>
-
-    <ion-item [hidden]="!!myDate">
-          <ion-label>Data</ion-label>
-          <ion-datetime displayFormat="DD/MM/YYYY" pickerFormat="DD/MM/YYYY" formControlName="data"></ion-datetime>
-        </ion-item>
-
-        <ion-item>
-          <ion-label stacked> Horário do Evento </ion-label>
-          <ion-input type= "text" formControlName="horario"></ion-input>
-        </ion-item>
-        <ion-item *ngIf="!form.controls.horario.valid && (form.controls.horario.dirty || form.controls.horario.touched)" color="danger">
-          <div [hidden]="!form.controls.horario.erros.required">
-            O campo é obrigatório
-          </div>
-        </ion-item>
-
-        <ion-item>
-          <ion-label stacked> Valor do Evento </ion-label>
-          <ion-input type= "text" formControlName="valor"></ion-input>
-        </ion-item>
-        <ion-item *ngIf="!form.controls.valor.valid && (form.controls.valor.dirty || form.controls.valor.touched)" color="danger">
-          <div [hidden]="!form.controls.valor.erros.required">
-            O campo é obrigatório
-          </div>
-        </ion-item>
+    <ion-item *ngIf="!form.controls.valor.valid && (form.controls.valor.dirty || form.controls.valor.touched)"
+      color="danger">
+      <div [hidden]="!form.controls.valor.erros.required">
+        O campo é obrigatório
+      </div>
+    </ion-item>
 
     <ion-item (click)="openGallery()">
-      <ion-label style="color:#999">Imagem:&nbsp; &nbsp;Escolha uma imagem</ion-label>
+      <ion-label style="color:#999" stacked>Imagem:&nbsp; &nbsp;Escolha uma imagem</ion-label>
+      <ion-input style="visibility: hidden;" formControlName="imagem" value="{{this.agenda.imagem}}"></ion-input>
     </ion-item>
+
     <div *ngIf="this.agenda.imagem" class="imagem">
-      <img [src]='this.agenda.imagem'/>
+      <img [src]='this.agenda.imagem' />
     </div>
 
     <div padding>
-      <button ion-button block type="submit" [disabled]="!form.valid" (click)="onSubmit()"> Salvar </button>
+      <button ion-button block type="submit"  [disabled]="!form.valid"> Salvar </button>
     </div>
 
   </form>

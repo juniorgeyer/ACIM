@@ -1,4 +1,4 @@
-<ion-header >
+<ion-header>
 
   <ion-navbar color="primary">
     <ion-title style="text-align: center">Agendacim</ion-title>
@@ -8,27 +8,24 @@
 
 
 <ion-content padding>
-  <ion-list>
-      <h1>  Janeiro </h1>
-    <div *ngFor= "let contact of (contacts | async)?.slice().reverse()">
-    <ion-item *ngIf="contact.mes=='01'" (click)="presentModal(contact)">{{contact.dia+ " - "+contact.titulo}}</ion-item>
-</div>
-  </ion-list>
 
   <ion-list>
-      <h1>  Fevereiro </h1>
-    <div *ngFor= "let contact of (contacts | async)?.slice().reverse()">
-    <ion-item *ngIf="contact.mes=='02'" (click)="presentModal(contact)">{{contact.dia+ " - "+contact.titulo}}</ion-item>
-</div>
+    <div *ngFor="let agenda of agendas.slice().reverse();">
+      
+      <div *ngFor="let evento of agenda; index as i">
+          <h1 *ngIf="i == 0">{{evento.nomeMes}}</h1>
+        <ion-item (click)="presentModal(evento)">
+          {{evento.dia+ " - "+evento.titulo}}
+        </ion-item>
+        <br/>
+      </div>
+    </div>
   </ion-list>
 
-  <ion-list>
-      <h1>  Março </h1>
-    <div *ngFor= "let contact of (contacts | async)?.slice().reverse()">
-    <ion-item *ngIf="contact.mes=='03'" (click)="presentModal(contact)">{{contact.dia+ " - "+contact.titulo}}</ion-item>
-</div>
-  </ion-list>
-    <ion-fab bottom right>
-      <button ion-fab color="primary" (click)="newNoticia()">Button</button>
-    </ion-fab>
+  <ion-fab bottom right>
+    <button ion-fab color="primary" (click)="newNoticia()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+
 </ion-content>

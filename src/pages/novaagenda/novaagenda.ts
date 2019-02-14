@@ -30,20 +30,20 @@ export class NovaagendaPage {
     }
 
     private setupPageTitle() {
-      this.title = this.navParams.data.agenda? 'Alterando notícia': 'Nova Notícia';
+      this.title = this.navParams.data.agenda? 'Alterando evento': 'Novo Evento';
     }
 
     createForm(){
 
       this.form = this.formBuilder.group({
         key: [this.agenda.key],
-        titulo: [this.agenda.titulo],
-        descricao: [this.agenda.descricao],
-        textoNotificacao: [this.agenda.textoNotificacao],
-        data: [this.agenda.data],
-        localizacao: [this.agenda.localizacao],
-        valor: [this.agenda.valor],
-        horario: [this.agenda.horario ]
+        titulo: [this.agenda.titulo, Validators.required],
+        descricao: [this.agenda.descricao, Validators.required],
+        data: [this.agenda.data, Validators.required],
+        localizacao: [this.agenda.localizacao, Validators.required],
+        valor: [this.agenda.valor, Validators.required],
+        horario: [this.agenda.horario , Validators.required],
+        imagem: [this.agenda.imagem]
       });
 
     }
@@ -52,9 +52,9 @@ export class NovaagendaPage {
       onSubmit(){
 
       if(this.form.valid){
-        this.provider.save(this.form.value, this.agenda.imagem)
+        this.provider.save(this.form.value)
         .then(()=>{
-          this.toast.create({message: 'Noticia adicionada com sucesso.', duration:3000}).present();
+          this.toast.create({message: 'Evento adicionado com sucesso.', duration:3000}).present();
           this.navCtrl.pop();
         })
         .catch((e)=>{

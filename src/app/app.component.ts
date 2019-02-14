@@ -21,6 +21,7 @@ import { ModalcursoPage } from '../pages/modalcurso/modalcurso';
 import { QuemsomosPage } from '../pages/quemsomos/quemsomos';
 import { EmpresasassociadasPage } from '../pages/empresasassociadas/empresasassociadas';
 
+
 @Component({
   templateUrl: 'app.html'
 })
