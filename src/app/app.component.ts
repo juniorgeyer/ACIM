@@ -18,6 +18,8 @@ import { CadastronoticiaProvider } from '../providers/cadastronoticia/cadastrono
 import { ModalnoticiasPage } from '../pages/modalnoticias/modalnoticias';
 import { CadastrocursoProvider } from '../providers/cadastrocurso/cadastrocurso';
 import { ModalcursoPage } from '../pages/modalcurso/modalcurso';
+import { QuemsomosPage } from '../pages/quemsomos/quemsomos';
+import { EmpresasassociadasPage } from '../pages/empresasassociadas/empresasassociadas';
 
 @Component({
   templateUrl: 'app.html'
@@ -42,7 +44,7 @@ export class MyApp {
       db.firestore.settings({ timestampsInSnapshots: true });
       this.platform.ready().then(() => {
         // Get a FCM token
-        
+
       /*  this.fcm.getToken()
 
         // Listen to incoming messages
@@ -78,7 +80,7 @@ export class MyApp {
       })
       )
       .subscribe()*/
-      
+
 
   this.statusBar.styleDefault();
   this.splashScreen.hide();
@@ -99,5 +101,11 @@ export class MyApp {
 
   chamaAgendAcim(selectedTab){
     this.nav.push(TabsPage, {selectedTab:selectedTab});
+  }
+  chamaQuemSomos(selectedTab){
+    this.nav.push(QuemsomosPage, {selectedTab:selectedTab});
+  }
+  chamaEmpresas(selectedTab){
+    this.nav.push(EmpresasassociadasPage, {selectedTab:selectedTab});
   }
 }

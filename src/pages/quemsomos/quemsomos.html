@@ -1,0 +1,87 @@
+<!--
+  Generated template for the QuemsomosPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title style="text-align: center">Quem somos</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div class="image">
+    <img class="circle-pic" src="assets/imgs/acim.jpg"/>
+    </div>
+  <div padding>
+    <ion-segment [(ngModel)]="pet">
+      <ion-segment-button value="contato">
+        Contato
+      </ion-segment-button>
+      <ion-segment-button value="historia">
+        Nossa História
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div [ngSwitch]="pet">
+
+  <div *ngSwitchCase="'contato'">
+    <ion-card>
+    <ion-card-header>
+    <ion-icon name="at" item-start></ion-icon>
+      Email e site
+    </ion-card-header>
+    <ion-card-content>
+      acim@acimmaraba.com.br <br>
+    <a href="www.acimmaraba.com.br">  www.acimmaraba.com.br </a>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+  <ion-card-header>
+  <ion-icon name="call" item-start></ion-icon>
+    Telefones
+  </ion-card-header>
+  <ion-card-content>
+    (94) 99100-6004 <br>
+    (94) 3321-1020
+  </ion-card-content>
+  </ion-card>
+  <ion-card>
+  <ion-card-header>
+  <ion-icon name="pin" item-start></ion-icon>
+    Endereço
+  </ion-card-header>
+  <ion-card-content>
+  Praça Duque de Caxias, R. Norberto de Melo, 1123 Velha Marabá   <br>
+  Marabá - PA, 68500-050
+  </ion-card-content>
+  </ion-card>
+  <ion-card>
+  <ion-card-header>
+  <ion-icon name="thumbs-up" item-start></ion-icon>
+  Entre em contato com a gente!
+  </ion-card-header>
+  <ion-card-content>
+  E venha fazer parte da Associação Comercial e Industrial de Marabá
+  </ion-card-content>
+  </ion-card>
+    </div>
+
+    <ion-list *ngSwitchCase="'historia'">
+      <br>
+  <h5>A ACIM (Associação Comercial e Industrial de Marabá) completou em 19 de agosto último 45 anos de fundação.
+  Nasceu pelas mãos do empresário Lourival Macias, seu primeiro presidente. Ao longo de quase cinco décadas,
+  sua história mistura-se com a de Marabá, entre tantas lutas em nome do crescimento e do desenvolvimento econômico,
+  social e cultural do município, o que lhe rende a posição de segunda maior e mais forte Associação Comercial do Estado do Pará.</h5>
+  <h5>Nossa história nos orgulha, por sermos, reconhecidamente, uma alavanca para o desenvolvimento local, sem interesses
+     políticos, sem fogueiras de vaidades sem fins lucrativos. Nosso principal objetivo é o apoio do setor industrial e
+     comercial de Marabá, permitindo principalmente aos associados uma forma de representatividade política, contribuindo
+     para o desenvolvimento de negócios empresariais na comunidade. </h5>
+    </ion-list>
+  </div>
+</ion-content>

@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { Camera } from '@ionic-native/camera';
+import { HttpClientModule} from '@angular/common/http';
+
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -19,6 +21,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { CadastronoticiaProvider } from '../providers/cadastronoticia/cadastronoticia';
 import { NovanoticiaPage } from '../pages/novanoticia/novanoticia';
+import { QuemsomosPage } from '../pages/quemsomos/quemsomos';
+import { EmpresasassociadasPage } from '../pages/empresasassociadas/empresasassociadas';
 
 import { AgendacimPage } from '../pages/agendacim/agendacim';
 import { FcmProvider } from '../providers/fcm/fcm';
@@ -43,10 +47,13 @@ import { Autosize} from '../directives/autosize/autosize';
     CapacitacimPage,
     NovaagendaPage,
     NovocursoPage,
+    QuemsomosPage,
+    EmpresasassociadasPage,
     Autosize
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp({
    apiKey: "AIzaSyCfAexNlYuNCCiseiRzrqiGv-RelNmN7Qc",
@@ -72,7 +79,10 @@ import { Autosize} from '../directives/autosize/autosize';
     AgendacimPage,
     CapacitacimPage,
     NovaagendaPage,
-    NovocursoPage
+    NovocursoPage,
+    QuemsomosPage,
+    EmpresasassociadasPage
+
   ],
   providers: [
     StatusBar,
