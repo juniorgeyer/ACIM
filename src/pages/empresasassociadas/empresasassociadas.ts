@@ -17,7 +17,7 @@ import { ServiceProvider } from '../../providers/service/service';
 })
 export class EmpresasassociadasPage {
   public items : Array<any> = [];
-  users: any[];
+  users: Observable<any>;
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient,
                 public service: ServiceProvider) {
   }

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController  } from 'ionic-angular';
 import { NovanoticiaPage } from '../novanoticia/novanoticia';
+import { ModalinicialPage } from '../modalinicial/modalinicial';
+import { IonicStorageModule  } from '@ionic/storage';
 
 import { CadastronoticiaProvider} from './../../providers/cadastronoticia/cadastronoticia';
 import {Observable} from 'rxjs';
@@ -35,18 +37,36 @@ export class HomeinformacimPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private provider: CadastronoticiaProvider,
-    private toast: ToastController, 
+    private toast: ToastController,
     private af: AngularFireDatabase,
     public modalCtrl: ModalController,
     private db: AngularFirestore,
-    private socialSharing: SocialSharing
+    private socialSharing: SocialSharing,
+    private storage: Storage
   ) {
       db.firestore.settings({ timestampsInSnapshots: true });
       this.contacts = this.provider.getAll();
+
+      storage.get('primeirologin').then((val) => {
+         if(val==null){
+                 storage.set('primeirologin','True');
+                 this.ajudainicial();
+         }
+         else{
+             //Não chama aba inicial de ajuda
+         }
+     });
   }
 
+  ajudainicial() {
+       let profileModal = this.modalCtrl.create(ModalinicialPage);
+       profileModal.present();
+       profileModal.onDidDismiss(data => {
+         console.log(data);
+       });
+     }
     whatsappShare(contact){
-        this.socialSharing.shareViaWhatsApp(contact.titulo, "data:image/png;base64,R0lGODlhDAAMALMBAP8AAP///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAUKAAEALAAAAAAMAAwAQAQZMMhJK7iY4p3nlZ8XgmNlnibXdVqolmhcRQA7" , "Venha e baixe o aplicativo ACIM! link...")
+        this.socialSharing.shareViaWhatsApp(contact.titulo, contact.imagem , "Venha e baixe o aplicativo ACIM e fique por dentro de tudo da nossa Associação Comercial e Industrial de Marabá!")
           .then(()=>{
             console.log("WhatsApp share successful");
           }).catch((err)=> {
