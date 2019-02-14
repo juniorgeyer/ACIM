@@ -13,9 +13,7 @@ export class ServiceProvider {
       }
 
     getData(){
-    	return this.http.get(this.api+ 'lerdados.php').map(res=> res
-
-    	);
+    	return this.http.get(this.api+ 'lerdados.php').map(res=> res);
     }
   	
 

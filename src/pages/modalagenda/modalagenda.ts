@@ -4,12 +4,6 @@ import { AngularFirestore } from 'angularfire2/firestore';
 import { LocalNotifications } from '@ionic-native/local-notifications/';
 declare var google;
 
-/**
- * Generated class for the ModalagendaPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -45,8 +39,8 @@ title: string;
     data.setFullYear(this.crit.ano);
     data.setMonth(+this.crit.mes-1);
     data.setDate(this.crit.dia);
-    data.setHours(15);
-    data.setMinutes(40);
+    data.setHours(8);
+    data.setMinutes(20);
     data.setSeconds(0);
 
     this.localNotifications.schedule({
