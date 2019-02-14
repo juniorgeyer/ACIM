@@ -19,6 +19,7 @@ import { ModalnoticiasPage } from '../pages/modalnoticias/modalnoticias';
 import { CadastrocursoProvider } from '../providers/cadastrocurso/cadastrocurso';
 import { ModalcursoPage } from '../pages/modalcurso/modalcurso';
 import { QuemsomosPage } from '../pages/quemsomos/quemsomos';
+import { CapacitacimPage } from '../pages/capacitacim/capacitacim';
 import { EmpresasassociadasPage } from '../pages/empresasassociadas/empresasassociadas';
 
 
@@ -103,6 +104,13 @@ export class MyApp {
   chamaAgendAcim(selectedTab){
     this.nav.push(TabsPage, {selectedTab:selectedTab});
   }
+  chamaInformAcim(selectedTab){
+    this.nav.push(HomeinformacimPage, {selectedTab:selectedTab});
+  }
+  chamaCapacitAcim(selectedTab){
+    this.nav.push(CapacitacimPage, {selectedTab:selectedTab});
+  }
+
   chamaQuemSomos(selectedTab){
     this.nav.push(QuemsomosPage, {selectedTab:selectedTab});
   }

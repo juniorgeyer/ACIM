@@ -6,20 +6,17 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>empresasassociadas</ion-title>
+  <ion-navbar color="primary">
+    <ion-title style="text-align: center">Associados</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <ion-item *ngFor="let item of items">
+
+  <ion-item *ngFor="let item of users ?.slice().reverse()">
        <h2>{{ item.nome_fantasia }} </h2>
-       <button
-          ion-button
-          color="primary"
-          item-right
-          (click)="viewEntry({ record: item })">View</button>
+
     </ion-item>
 </ion-content>

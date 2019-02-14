@@ -35,6 +35,8 @@ import { CadastrocursoProvider } from '../providers/cadastrocurso/cadastrocurso'
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { Autosize} from '../directives/autosize/autosize';
 import {LocalNotifications} from "@ionic-native/local-notifications";
+import { ServiceProvider } from '../providers/service/service';
+
 
 @NgModule({
   declarations: [
@@ -98,7 +100,8 @@ import {LocalNotifications} from "@ionic-native/local-notifications";
     CadastroagendaProvider,
     CadastrocursoProvider,
     InAppBrowser,
-    LocalNotifications
+    LocalNotifications,
+    ServiceProvider
   ]
 })
 export class AppModule {}
