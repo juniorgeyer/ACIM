@@ -36,6 +36,8 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { Autosize} from '../directives/autosize/autosize';
 import {LocalNotifications} from "@ionic-native/local-notifications";
 import { ServiceProvider } from '../providers/service/service';
+import { IonicStorageModule } from '@ionic/storage';
+import { ModalinicialPage } from '../pages/modalinicial/modalinicial';
 
 
 @NgModule({
@@ -52,7 +54,8 @@ import { ServiceProvider } from '../providers/service/service';
     NovocursoPage,
     QuemsomosPage,
     EmpresasassociadasPage,
-    Autosize
+    Autosize,
+    ModalinicialPage
   ],
   imports: [
     BrowserModule,
@@ -69,7 +72,8 @@ import { ServiceProvider } from '../providers/service/service';
     ),
     AngularFirestoreModule.enablePersistence(),
     AngularFireDatabaseModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -84,7 +88,8 @@ import { ServiceProvider } from '../providers/service/service';
     NovaagendaPage,
     NovocursoPage,
     QuemsomosPage,
-    EmpresasassociadasPage
+    EmpresasassociadasPage,
+    ModalinicialPage
 
   ],
   providers: [

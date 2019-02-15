@@ -19,4 +19,15 @@ page-modalcurso {
       .toolbar-title-md {
         padding: 5px;
       }
+
+      .label-title {
+        text-overflow: inherit;
+        white-space: normal;
+        text-align: center !important;
+        color: white;
+        font-size: 1.6rem;
+        display: block;
+        margin-left: 8%;
+        width: 92%;
+     }
 }

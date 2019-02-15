@@ -57,11 +57,9 @@ export class AgendacimPage {
         arrayAuxiliar = [];
       });
     }
-    console.log(this.agendas);
   }
 
   presentModal(dados) {
-    console.log(dados);
     const modal = this.modalCtrl.create('ModalagendaPage', { title: dados });
     modal.present();
   }

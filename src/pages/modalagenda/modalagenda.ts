@@ -49,7 +49,6 @@ title: string;
       text: this.crit.titulo,
       trigger: {at: data}
     });
-    console.log(data);
       let toast = this.toastCtrl.create({
         message: 'Você Será Notificado No Dia Do Evento',
         duration: 3000

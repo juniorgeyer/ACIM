@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar color="primary">
-    <ion-title style="text-align: center">Capacitacim</ion-title>
+    <ion-title style="text-align: center">CapacitACIM</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -16,7 +16,7 @@
         <ion-avatar item-start>
           <img src="assets/imgs/acim.jpg" />
         </ion-avatar>
-        <h2>{{curso.titulo}}</h2>
+        <label class="label-title">{{curso.titulo}}</label>
 
         <p>{{curso.ministrante}}</p>
       </ion-item>
@@ -36,7 +36,7 @@
           </button>
         </ion-col>
         <ion-col>
-          <button ion-button icon-start clear small>
+          <button ion-button icon-start clear small (click)="whatsappShare(curso)">
             <ion-icon name="share"></ion-icon>
             <div>Compartilhar</div>
           </button>
@@ -50,8 +50,8 @@
 <div *ngIf="vazio == true">
   <h3 style="position: absolute; top: 30%; margin: 10%; text-align: center; font-weight: bold;">Os Cursos Ofertados Aparecerão Nesta Área</h3>
 </div>
-<!--
-  <ion-fab bottom right>
+
+  <!--<ion-fab bottom right>
     <button ion-fab color="primary" (click)="novoCurso()">
       <ion-icon name="add"></ion-icon>
     </button>

@@ -65,10 +65,41 @@
     </ion-item>
 
     <ion-item>
-      <ion-label stacked> Valor do Curso </ion-label>
-      <ion-input type="text" formControlName="valor"></ion-input>
+      <ion-label stacked> Investimento MEI associado </ion-label>
+      <ion-input type="text" formControlName="valormeiassociado"></ion-input>
     </ion-item>
-    <ion-item *ngIf="!form.controls.valor.valid && (form.controls.valor.dirty || form.controls.valor.touched)" color="danger">
+    <ion-item *ngIf="!form.controls.valormeiassociado.valid && (form.controls.valormeiassociado.dirty || form.controls.valormeiassociado.touched)" color="danger">
+      <div>
+        O campo é obrigatório
+      </div>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked> Investimento MEI não associado </ion-label>
+      <ion-input type="text" formControlName="valormeianaossociado"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="!form.controls.valormeianaossociado.valid && (form.controls.valormeianaossociado.dirty || form.controls.valormeianaossociado.touched)" color="danger">
+      <div>
+        O campo é obrigatório
+      </div>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked> Investimento Empresa associada </ion-label>
+      <ion-input type="text" formControlName="valorempresaassociada"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="!form.controls.valorempresaassociada.valid && (form.controls.valorempresaassociada.dirty || form.controls.valorempresaassociada.touched)" color="danger">
+      <div>
+        O campo é obrigatório
+      </div>
+    </ion-item>
+
+    
+    <ion-item>
+      <ion-label stacked> Investimento Empresa não associada </ion-label>
+      <ion-input type="text" formControlName="valorempresanaoassociada"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="!form.controls.valorempresanaoassociada.valid && (form.controls.valorempresanaoassociada.dirty || form.controls.valorempresanaoassociada.touched)" color="danger">
       <div>
         O campo é obrigatório
       </div>

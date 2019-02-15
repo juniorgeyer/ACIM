@@ -47,21 +47,7 @@ export class MyApp {
       this.platform.ready().then(() => {
         // Get a FCM token
 
-      /*  this.fcm.getToken()
-
-        // Listen to incoming messages
-        this.fcm.listenToNotifications().pipe(
-          tap(msg => {
-            // show a toast
-            const toast = this.toastCtrl.create({
-              message: msg.body,
-              duration: 3000
-            });
-            toast.present();
-          })
-        )
-        .subscribe()*/
-
+      /*  this.fcm.getToken()*/
         
         this.fcm.getToken()
         this.fcm.listenToNotifications().pipe(

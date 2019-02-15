@@ -48,7 +48,7 @@ export class ModalcursoPage {
   }
 
   whatsappShare(contact) {
-    this.socialSharing.shareViaWhatsApp(contact.titulo, "data:image/png;base64,R0lGODlhDAAMALMBAP8AAP///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAUKAAEALAAAAAAMAAwAQAQZMMhJK7iY4p3nlZ8XgmNlnibXdVqolmhcRQA7", "Venha e baixe o aplicativo ACIM! link...")
+    this.socialSharing.shareViaWhatsApp(contact.titulo, contact.imagem, "Venha e baixe o aplicativo ACIM! link...")
       .then(() => {
         console.log("WhatsApp share successful");
       }).catch((err) => {

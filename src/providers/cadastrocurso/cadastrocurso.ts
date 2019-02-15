@@ -19,7 +19,7 @@ export class CadastrocursoProvider {
   * Função para retornar todos os cursos cadastrados
   */
   getAll() {
-    return this.afs.collection(this.PATH, ref => ref.orderBy('data'))
+    return this.afs.collection(this.PATH, ref => ref.orderBy('ordenacao'))
       .snapshotChanges().map(changes => {
         return changes.map(c => {
           const data = c.payload.doc.data() as any;
@@ -49,6 +49,8 @@ export class CadastrocursoProvider {
       var ano = dividir_crit[0];
       var dia = dividir_crit[2];
       var mes = dividir_crit[1];
+
+      var ordenacao = ano+mes+dia;
 
       var meses = [
         "Janeiro",
@@ -80,9 +82,13 @@ export class CadastrocursoProvider {
           localizacao: curso.localizacao,
           horario: curso.horario,
           link: curso.link,
-          valor: curso.valor,
+          valormeiassociado: curso.valormeiassociado,
+          valormeianaossociado: curso.valormeianaossociado,
+          valorempresaassociada: curso.valorempresaassociada,
+          valorempresanaoassociada: curso.valorempresanaoassociada,
           dia: dia,
-          mes: mes
+          mes: mes,
+          ordenacao: ordenacao
         }).catch(()=>{
           this.toast.create({ message: 'Problema ao adicionar o curso.', duration: 3000 }).present();
         }).then(() =>{

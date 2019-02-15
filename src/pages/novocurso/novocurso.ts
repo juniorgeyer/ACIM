@@ -39,9 +39,12 @@ export class NovocursoPage {
       ministrante: [this.curso.ministrante, Validators.required],
       data: [this.curso.data, Validators.required],
       localizacao: [this.curso.localizacao, Validators.required],
-      valor: [this.curso.valor, Validators.required],
-      horario: [this.curso.horario, Validators.required],
-      link: [this.curso.horario, Validators.required],
+      valormeiassociado: [this.curso.valorvalormeiassociado],
+      valormeianaossociado: [this.curso.valorvalormeiassociado],
+      valorempresaassociada: [this.curso.valorvalormeiassociado],
+      valorempresanaoassociada: [this.curso.valorvalormeiassociado],
+      horario: [this.curso.horario],
+      link: [this.curso.horario],
       imagem: [this.curso.imagem]
     });
 

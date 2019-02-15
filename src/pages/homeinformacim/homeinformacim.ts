@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, ToastController  } from 'ionic-ang
 import { NovanoticiaPage } from '../novanoticia/novanoticia';
 import { ModalinicialPage } from '../modalinicial/modalinicial';
 import { IonicStorageModule  } from '@ionic/storage';
+import { Storage } from '@ionic/storage';
 
 import { CadastronoticiaProvider} from './../../providers/cadastronoticia/cadastronoticia';
 import {Observable} from 'rxjs';
@@ -62,7 +63,6 @@ export class HomeinformacimPage {
        let profileModal = this.modalCtrl.create(ModalinicialPage);
        profileModal.present();
        profileModal.onDidDismiss(data => {
-         console.log(data);
        });
      }
     whatsappShare(contact){

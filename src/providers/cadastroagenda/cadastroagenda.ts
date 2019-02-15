@@ -9,7 +9,6 @@ export class CadastroagendaProvider {
 
   constructor(  private db: AngularFireDatabase,
     private afs: AngularFirestore) {
-    console.log('Hello CadastroagendaProvider Provider');
   }
 
   getAll(){

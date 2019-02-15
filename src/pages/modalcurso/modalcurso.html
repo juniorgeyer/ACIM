@@ -6,7 +6,7 @@
         <ion-icon name="arrow-round-back"></ion-icon>
       </button>
     </ion-buttons>
-    <ion-title style="color: white; white-space: normal; font-size: 1.6rem">{{curso.titulo}}</ion-title>
+    <label class="label-title">{{curso.titulo}}</label>
   </ion-navbar>
 
 </ion-header>
@@ -17,8 +17,12 @@
     <img src="{{curso.imagem}}" />
     <h6><b>Local: &nbsp;</b>{{curso.localizacao}}</h6>
     <p style="font-size:medium">{{curso.descricao}}</p>
-    <h6><b>Autor: &nbsp;</b> {{curso.ministrante}}</h6>
-    <h6><b>Valor: &nbsp;</b> {{curso.valor}}</h6>
+    <h6><b>Ministrante: &nbsp;</b> {{curso.ministrante}}</h6>
+    <h6><b>Investimento:</b></h6>
+    <h6><i>MEI associado -</i> &nbsp; {{curso.valormeiassociado}}</h6>
+    <h6><i>MEI não associado -</i> &nbsp; {{curso.valormeianaossociado}}</h6>
+    <h6><i>Empresa associada -</i> &nbsp; {{curso.valorempresaassociada}}</h6>
+    <h6><i>Empresa não associada -</i> &nbsp; {{curso.valorempresanaoassociada}}</h6>
     <h6>
       <a *ngIf="curso.link != 'undefined' && curso.link != '' && curso.link != null" (click)="abrirLink()">Link de
         inscrição</a>
