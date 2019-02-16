@@ -15,7 +15,7 @@
       <div *ngFor="let evento of agenda; index as i">
           <h1 *ngIf="i == 0">{{evento.nomeMes}}</h1>
         <ion-item (click)="presentModal(evento)">
-          {{evento.dia+ " - "+evento.titulo}}
+          <ion-label style="white-space: normal;">{{"Dia "+evento.dia+" ("+ evento.horario+"h)"+" - "+evento.titulo}}</ion-label>
         </ion-item>
         <br/>
       </div>
