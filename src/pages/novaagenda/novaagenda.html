@@ -9,7 +9,7 @@
 
 <ion-content padding>
 
-  <form #eventoForm="ngForm" [formGroup]="form" (submit)="onSubmit(); eventoForm.reset(); agenda.imagem = '';">
+  <form #eventoForm="ngForm" [formGroup]="form" (submit)="onSubmit();">
 
     <ion-item>
       <ion-label stacked> Título </ion-label>

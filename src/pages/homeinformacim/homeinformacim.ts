@@ -66,11 +66,9 @@ export class HomeinformacimPage {
        });
      }
     whatsappShare(contact){
-        this.socialSharing.shareViaWhatsApp(contact.titulo, contact.imagem , "Venha e baixe o aplicativo ACIM e fique por dentro de tudo da nossa Associação Comercial e Industrial de Marabá!")
+        this.socialSharing.shareViaWhatsApp(contact.titulo, contact.imagem , ". Baixe o aplicativo ACIM e fique por dentro de tudo da nossa Associação Comercial e Industrial de Marabá! Link --> https://play.google.com/store/apps/details?id=ctech.acim")
           .then(()=>{
-            console.log("WhatsApp share successful");
           }).catch((err)=> {
-          console.log("An error occurred ", err);
         });
       }
 

@@ -48,11 +48,9 @@ export class ModalcursoPage {
   }
 
   whatsappShare(contact) {
-    this.socialSharing.shareViaWhatsApp(contact.titulo, contact.imagem, "Venha e baixe o aplicativo ACIM! link...")
+    this.socialSharing.shareViaWhatsApp(contact.titulo, contact.imagem, ". Venha e baixe o aplicativo ACIM! Link --> https://play.google.com/store/apps/details?id=ctech.acim")
       .then(() => {
-        console.log("WhatsApp share successful");
       }).catch((err) => {
-        console.log("An error occurred ", err);
       });
   }
 }

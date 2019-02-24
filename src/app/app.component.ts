@@ -21,6 +21,8 @@ import { ModalcursoPage } from '../pages/modalcurso/modalcurso';
 import { QuemsomosPage } from '../pages/quemsomos/quemsomos';
 import { CapacitacimPage } from '../pages/capacitacim/capacitacim';
 import { EmpresasassociadasPage } from '../pages/empresasassociadas/empresasassociadas';
+import { TestesPage } from '../pages/testes/testes';
+import { NovaagendaPage } from '../pages/novaagenda/novaagenda';
 
 
 @Component({
@@ -47,7 +49,7 @@ export class MyApp {
       this.platform.ready().then(() => {
         // Get a FCM token
 
-      /*  this.fcm.getToken()*/
+      /*  this.fcm.getToken()
         
         this.fcm.getToken()
         this.fcm.listenToNotifications().pipe(
@@ -69,7 +71,7 @@ export class MyApp {
           }
       })
       )
-      .subscribe()
+      .subscribe()*/
 
 
   this.statusBar.styleDefault();
@@ -105,4 +107,5 @@ export class MyApp {
   chamaEmpresas(selectedTab){
     this.nav.push(EmpresasassociadasPage, {selectedTab:selectedTab});
   }
+
 }
