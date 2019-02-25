@@ -25,13 +25,7 @@ export class CadastroagendaProvider {
   }
 
   get(key: string) {
-    var data: any = "";
-    return this.db.object(this.PATH + key)
-      .snapshotChanges()
-      //.orderByChild('texto')
-      .map(c => {
-        return { key: c.key, ...c.payload.val() };
-      })
+    return this.afs.collection("agenda").doc(key).ref.get();
   }
 
   save(agenda: any) {

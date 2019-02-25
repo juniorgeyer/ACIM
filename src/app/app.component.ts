@@ -23,6 +23,8 @@ import { CapacitacimPage } from '../pages/capacitacim/capacitacim';
 import { EmpresasassociadasPage } from '../pages/empresasassociadas/empresasassociadas';
 import { TestesPage } from '../pages/testes/testes';
 import { NovaagendaPage } from '../pages/novaagenda/novaagenda';
+import { CadastroagendaProvider } from '../providers/cadastroagenda/cadastroagenda';
+import { ModalagendaPage } from '../pages/modalagenda/modalagenda';
 
 
 @Component({
@@ -43,13 +45,14 @@ export class MyApp {
     private db: AngularFirestore,
     private provider: CadastronoticiaProvider,
     private providerCursos: CadastrocursoProvider,
+    private providerAgenda: CadastroagendaProvider,
     public modalCtrl: ModalController
   ) {
       db.firestore.settings({ timestampsInSnapshots: true });
       this.platform.ready().then(() => {
         // Get a FCM token
 
-      /*  this.fcm.getToken()
+       /* this.fcm.getToken()
         
         this.fcm.getToken()
         this.fcm.listenToNotifications().pipe(
@@ -63,6 +66,11 @@ export class MyApp {
             }else if(data.acao == "novoCurso"){
               this.providerCursos.get(data.titulo).then(dados=>{
                 const modal = this.modalCtrl.create('ModalcursoPage',{"curso":dados.data()});
+                modal.present();
+              });
+            }else if(data.acao == "novaAgenda"){
+              this.providerAgenda.get(data.titulo).then(dados => {
+                const modal = this.modalCtrl.create("ModalagendaPage", {"title":dados.data()});
                 modal.present();
               });
             }

@@ -79,6 +79,7 @@ export class CadastrocursoProvider {
           descricao: curso.descricao,
           data: horario,
           ministrante: curso.ministrante,
+          resumoProfissional: curso.resumoProfissional,
           localizacao: curso.localizacao,
           horario: curso.horario,
           link: curso.link,
@@ -86,6 +87,7 @@ export class CadastrocursoProvider {
           valormeianaossociado: curso.valormeianaossociado,
           valorempresaassociada: curso.valorempresaassociada,
           valorempresanaoassociada: curso.valorempresanaoassociada,
+          valorpessoafisica: curso.valorpessoafisica,
           dia: dia,
           mes: mes,
           ordenacao: ordenacao

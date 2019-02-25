@@ -44,6 +44,11 @@
       </ion-item>
 
     <ion-item>
+      <ion-label stacked> Resumo Profissional </ion-label>
+      <ion-textarea autosize type="text" formControlName="resumoProfissional"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
       <ion-label stacked> Localização </ion-label>
       <ion-input type="text" formControlName="localizacao"></ion-input>
     </ion-item>
@@ -93,13 +98,22 @@
         O campo é obrigatório
       </div>
     </ion-item>
-
-    
+ 
     <ion-item>
       <ion-label stacked> Investimento Empresa não associada </ion-label>
       <ion-input type="text" formControlName="valorempresanaoassociada"></ion-input>
     </ion-item>
     <ion-item *ngIf="!form.controls.valorempresanaoassociada.valid && (form.controls.valorempresanaoassociada.dirty || form.controls.valorempresanaoassociada.touched)" color="danger">
+      <div>
+        O campo é obrigatório
+      </div>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked> Investimento Pessoa Física </ion-label>
+      <ion-input type="text" formControlName="valorpessoafisica"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="!form.controls.valorpessoafisica.valid && (form.controls.valorpessoafisica.dirty || form.controls.valorpessoafisica.touched)" color="danger">
       <div>
         O campo é obrigatório
       </div>

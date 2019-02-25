@@ -43,9 +43,11 @@ export class NovocursoPage {
       valormeianaossociado: [this.curso.valorvalormeiassociado],
       valorempresaassociada: [this.curso.valorvalormeiassociado],
       valorempresanaoassociada: [this.curso.valorvalormeiassociado],
+      valorpessoafisica: [this.curso.valorpessoafisica],
       horario: [this.curso.horario],
       link: [this.curso.horario],
-      imagem: [this.curso.imagem]
+      imagem: [this.curso.imagem],
+      resumoProfissional: [this.curso.resumoProfissional]
     });
 
   }
