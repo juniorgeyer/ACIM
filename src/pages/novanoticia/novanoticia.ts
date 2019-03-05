@@ -52,7 +52,8 @@ export class NovanoticiaPage {
         textoCompleto: [this.contact.textoCompleto],
         autor: [this.contact.autor],
         horario: [this.contact.horario],
-        imagem: [this.contact.imagem]
+        imagem: [this.contact.imagem],
+        link: [this.contact.link]
       });
 
     }
@@ -61,14 +62,23 @@ export class NovanoticiaPage {
                   
       if(this.form.valid){
         this.provider.save(this.form.value)
-        .then(()=>{
-          //this.toast.create({message: 'Noticia adicionada com sucesso.', duration:3000}).present();
-          this.navCtrl.pop();
+        .then(res => {
+          if (res == "ok") {
+            this.toast.create({ message: 'Notícia adicionada com sucesso.', duration: 3000 }).present();
+            this.form.reset();
+            this.contact.imagem = '';
+            this.navCtrl.pop();
+          } else {
+            var converteResposta = String(res);
+            var divideResposta = converteResposta.split(".");
+
+            if (divideResposta[0] == 'FirebaseError: [code=invalid-argument]: The value of property "imagem" is longer than 1048487 bytes') {
+              this.toast.create({ message: 'A imagem escolhida é muito grande!', duration: 3000 }).present();
+            } else {
+              this.toast.create({ message: 'Falha ao adicionar.', duration: 3000 }).present();
+            }
+          }
         })
-        .catch((e)=>{
-          //this.toast.create({message: 'Falha ao adicionar.', duration:3000}).present();
-          console.error(e);
-        });
       }
     }
 

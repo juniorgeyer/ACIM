@@ -9,7 +9,7 @@
 
 <ion-content padding>
 
-  <form #cursoForm="ngForm" [formGroup]="form" (submit)="onSubmit(); cursoForm.reset(); curso.imagem = '';">
+  <form #cursoForm="ngForm" [formGroup]="form" (submit)="onSubmit();">
 
     <ion-item>
       <ion-label stacked> Nome do curso </ion-label>
@@ -22,10 +22,10 @@
     </ion-item>
 
     <ion-item>
-      <ion-label stacked> Descrição do Curso </ion-label>
-      <ion-textarea autosize type="text" formControlName="descricao"></ion-textarea>
+      <ion-label stacked> Objetivo do Curso </ion-label>
+      <ion-textarea autosize type="text" formControlName="objetivo"></ion-textarea>
     </ion-item>
-    <ion-item *ngIf="!form.controls.descricao.valid && (form.controls.descricao.dirty || form.controls.descricao.touched)"
+    <ion-item *ngIf="!form.controls.objetivo.valid && (form.controls.objetivo.dirty || form.controls.objetivo.touched)"
       color="danger">
       <div>
         O campo é obrigatório
@@ -33,10 +33,10 @@
     </ion-item>
 
     <ion-item>
-        <ion-label stacked> Ministrante </ion-label>
-        <ion-input type="text" formControlName="ministrante"></ion-input>
+        <ion-label stacked> Facilitador </ion-label>
+        <ion-input type="text" formControlName="facilitador"></ion-input>
       </ion-item>
-      <ion-item *ngIf="!form.controls.ministrante.valid && (form.controls.ministrante.dirty || form.controls.ministrante.touched)"
+      <ion-item *ngIf="!form.controls.facilitador.valid && (form.controls.facilitador.dirty || form.controls.facilitador.touched)"
         color="danger">
         <div>
           O campo é obrigatório
@@ -44,7 +44,7 @@
       </ion-item>
 
     <ion-item>
-      <ion-label stacked> Resumo Profissional </ion-label>
+      <ion-label stacked> Resumo Profissional do Facilitador </ion-label>
       <ion-textarea autosize type="text" formControlName="resumoProfissional"></ion-textarea>
     </ion-item>
 
@@ -64,6 +64,37 @@
     </ion-item>
     <ion-item *ngIf="!form.controls.horario.valid && (form.controls.horario.dirty || form.controls.horario.touched)"
       color="danger">
+      <div>
+        O campo é obrigatório
+      </div>
+    </ion-item>
+
+    
+    <ion-item>
+      <ion-label stacked> Público Alvo </ion-label>
+      <ion-textarea autosize type="text" formControlName="publicoAlvo"></ion-textarea>
+    </ion-item>
+    <ion-item *ngIf="!form.controls.publicoAlvo.valid && (form.controls.publicoAlvo.dirty || form.controls.publicoAlvo.touched)" color="danger">
+      <div>
+        O campo é obrigatório
+      </div>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked> Temas Abordados </ion-label>
+      <ion-textarea autosize type="text" formControlName="temasAbordados"></ion-textarea>
+    </ion-item>
+    <ion-item *ngIf="!form.controls.temasAbordados.valid && (form.controls.temasAbordados.dirty || form.controls.temasAbordados.touched)" color="danger">
+      <div>
+        O campo é obrigatório
+      </div>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked> Carga Horária </ion-label>
+      <ion-input type="text" formControlName="cargaHoraria"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="!form.controls.cargaHoraria.valid && (form.controls.cargaHoraria.dirty || form.controls.cargaHoraria.touched)" color="danger">
       <div>
         O campo é obrigatório
       </div>

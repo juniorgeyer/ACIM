@@ -18,32 +18,15 @@
     <ion-card-content>
         <h6><b>Data: &nbsp;</b>{{contacts.horario}}</h6>
         <p style="font-size:medium; text-align: justify">{{contacts.textoCompleto}}</p>
-
+        <h6>
+            <a *ngIf="contacts.link != 'undefined' && contacts.link != '' && contacts.link != null" (click)="abrirLink()">
+                Leia essa notícia no site
+            </a>
+        </h6>
         <h6><b>Autor: &nbsp;</b>{{contacts.autor}}</h6>
-
-
     </ion-card-content>
+
     <button ion-button color="whatsapp" full (click)="whatsappShare(contacts)">
         Enviar pelo WhatsApp
     </button>
 </ion-content>
-<!-- <ion-footer>
-    <ion-toolbar style="background-color:#eeeeee">
-            <ion-grid>
-                <ion-row>
-
-                    <ion-col>
-                        <button ion-button clear color="dark" icon-only (click)="whatsappShare(contacts)">
-                            <ion-icon name="logo-whatsapp"></ion-icon>
-                        </button>
-                    </ion-col>
-
-                    <ion-col>
-                        <button ion-button clear color="dark" icon-only (click)="facebookShare(contacts)">
-                            <ion-icon name="logo-facebook"></ion-icon>
-                        </button>
-                    </ion-col>
-                </ion-row>
-            </ion-grid>
-    </ion-toolbar>
-</ion-footer>-->

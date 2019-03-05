@@ -5,6 +5,7 @@ import {Observable} from 'rxjs';
 import 'rxjs/add/operator/map';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { SocialSharing } from '@ionic-native/social-sharing';
+import { InAppBrowser, InAppBrowserOptions } from '@ionic-native/in-app-browser/ngx';
 
 
 @IonicPage()
@@ -29,7 +30,8 @@ export class ModalnoticiasPage {
     public viewCtrl: ViewController,
     private socialSharing: SocialSharing,
     public platform   : Platform,
-    private db: AngularFirestore) {
+    private db: AngularFirestore,
+    public inAppBrowser: InAppBrowser) {
     db.firestore.settings({ timestampsInSnapshots: true });
     this.contacts = navParams.get('noticia');
     this.titulo = this.contacts.titulo;
@@ -45,11 +47,19 @@ export class ModalnoticiasPage {
 
 
   whatsappShare(contact){
-      this.socialSharing.shareViaWhatsApp(contact.titulo,  contact.imagem , ". Baixe o aplicativo ACIM e fique por dentro de tudo da nossa Associação Comercial e Industrial de Marabá! Link --> https://play.google.com/store/apps/details?id=ctech.acim")
+      this.socialSharing.shareViaWhatsApp(contact.textoCompleto,  contact.imagem , "Baixe o aplicativo ACIM em https://play.google.com/store/apps/details?id=ctech.acim")
         .then(()=>{
         }).catch((err)=> {
       });
     }
+
+    
+  abrirLink() {
+    const options: InAppBrowserOptions = {
+      zoom: 'no'
+    }
+    const browser = this.inAppBrowser.create(this.contacts.link, '_system', options);
+  }
 
    //facebookShare(contact){
   //  this.socialSharing.shareViaFacebook(null, null , "null");

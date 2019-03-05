@@ -21,7 +21,6 @@ export class CadastroagendaProvider {
           return data;
         });
       });
-
   }
 
   get(key: string) {

@@ -35,8 +35,10 @@ export class NovocursoPage {
     this.form = this.formBuilder.group({
       key: [this.curso.key],
       titulo: [this.curso.titulo, Validators.required],
-      descricao: [this.curso.descricao, Validators.required],
-      ministrante: [this.curso.ministrante, Validators.required],
+
+      objetivo: [this.curso.objetivo, Validators.required],
+      facilitador: [this.curso.facilitador, Validators.required],
+
       data: [this.curso.data, Validators.required],
       localizacao: [this.curso.localizacao, Validators.required],
       valormeiassociado: [this.curso.valorvalormeiassociado],
@@ -47,9 +49,12 @@ export class NovocursoPage {
       horario: [this.curso.horario],
       link: [this.curso.horario],
       imagem: [this.curso.imagem],
-      resumoProfissional: [this.curso.resumoProfissional]
-    });
+      resumoProfissional: [this.curso.resumoProfissional],
 
+      publicoAlvo: [this.curso.publicoAlvo],
+      temasAbordados: [this.curso.temasAbordados],
+      cargaHoraria: [this.curso.cargaHoraria]
+    });
   }
 
   /*
@@ -59,6 +64,23 @@ export class NovocursoPage {
 
     if (this.form.valid) {
       this.provider.save(this.form.value)
+      .then(res => {
+        if (res == "ok") {
+          this.toast.create({ message: 'Curso adicionado com sucesso.', duration: 3000 }).present();
+          this.form.reset();
+          this.curso.imagem = '';
+          this.navCtrl.pop();
+        } else {
+          var converteResposta = String(res);
+          var divideResposta = converteResposta.split(".");
+
+          if (divideResposta[0] == 'FirebaseError: [code=invalid-argument]: The value of property "imagem" is longer than 1048487 bytes') {
+            this.toast.create({ message: 'A imagem escolhida é muito grande!', duration: 3000 }).present();
+          } else {
+            this.toast.create({ message: 'Falha ao adicionar.', duration: 3000 }).present();
+          }
+        }
+      })
     }
   }
 

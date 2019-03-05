@@ -14,6 +14,8 @@ import { InAppBrowser, InAppBrowserOptions } from '@ionic-native/in-app-browser/
 export class ModalcursoPage {
   curso: any;
   titulo: string;
+  temasAbordados: any;
+  temasAbordadosSplit: any[];
 
   constructor(
     public navCtrl: NavController,
@@ -26,6 +28,10 @@ export class ModalcursoPage {
     public inAppBrowser: InAppBrowser) {
     db.firestore.settings({ timestampsInSnapshots: true });
     this.curso = navParams.get('curso');
+
+    this.temasAbordados = String(this.curso.temasAbordados);
+    this.temasAbordadosSplit = this.temasAbordados.split(";");
+    console.log(this.temasAbordadosSplit);
   }
 
   fechar() {
@@ -48,7 +54,7 @@ export class ModalcursoPage {
   }
 
   whatsappShare(contact) {
-    this.socialSharing.shareViaWhatsApp(contact.titulo, contact.imagem, ". Venha e baixe o aplicativo ACIM! Link --> https://play.google.com/store/apps/details?id=ctech.acim")
+    this.socialSharing.shareViaWhatsApp(contact.titulo, contact.imagem, ". Baixe o aplicativo ACIM em https://play.google.com/store/apps/details?id=ctech.acim")
       .then(() => {
       }).catch((err) => {
       });

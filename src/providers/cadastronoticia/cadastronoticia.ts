@@ -16,13 +16,6 @@ export class CadastronoticiaProvider {
 
   getAll(){
 
-    /*return this.db.list(this.PATH, ref => ref.orderByChild('horario'))
-    .snapshotChanges()
-    .map(changes => {
-       return changes.map(c => ({
-         key: c.payload.key, ...c.payload.val()
-       }))
-    })*/
     return this.afs.collection(this.PATH, ref => ref.orderBy('ordenacao')  )
     .snapshotChanges().map(changes => {
       return changes.map(c => {
@@ -103,11 +96,13 @@ export class CadastronoticiaProvider {
             textoCompleto: contact.textoCompleto,
             autor: contact.autor,
             horario: horario,
-            ordenacao: ordenacao
-          }).catch(()=>{
-            this.toast.create({ message: 'Falha ao adicionar.', duration: 3000 }).present();
-          }).then(() =>{
-            this.toast.create({ message: 'Notícia adicionada com sucesso.', duration: 3000 }).present();
+            ordenacao: ordenacao,
+            link: contact.link
+          }).then(res =>{
+            resolve("ok");
+          })
+          .catch(res=>{
+            resolve(res);
           });
         });
   }

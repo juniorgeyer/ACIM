@@ -49,7 +49,7 @@ export class CapacitacimPage {
     }
 
     whatsappShare(contact){
-        this.socialSharing.shareViaWhatsApp(contact.titulo, contact.imagem, ". Venha e baixe o aplicativo ACIM! Link --> https://play.google.com/store/apps/details?id=ctech.acim")
+        this.socialSharing.shareViaWhatsApp(contact.titulo, contact.imagem, ". Baixe o aplicativo ACIM em https://play.google.com/store/apps/details?id=ctech.acim")
           .then(()=>{
           }).catch((err)=> {
         });

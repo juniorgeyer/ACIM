@@ -76,9 +76,9 @@ export class CadastrocursoProvider {
         .set({
           titulo: curso.titulo,
           imagem: curso.imagem,
-          descricao: curso.descricao,
+          objetivo: curso.objetivo,
           data: horario,
-          ministrante: curso.ministrante,
+          facilitador: curso.facilitador,
           resumoProfissional: curso.resumoProfissional,
           localizacao: curso.localizacao,
           horario: curso.horario,
@@ -90,12 +90,16 @@ export class CadastrocursoProvider {
           valorpessoafisica: curso.valorpessoafisica,
           dia: dia,
           mes: mes,
-          ordenacao: ordenacao
-        }).catch(()=>{
-          this.toast.create({ message: 'Problema ao adicionar o curso.', duration: 3000 }).present();
-        }).then(() =>{
-          this.toast.create({ message: 'Curso adicionado com sucesso.', duration: 3000 }).present();
+          ordenacao: ordenacao,
+          publicoAlvo: curso.publicoAlvo,
+          temasAbordados: curso.temasAbordados,
+          cargaHoraria: curso.cargaHoraria
+        }).then(res =>{
+          resolve("ok");
         })
+        .catch(res=>{
+          resolve(res);
+        });
     });
   }
 
