@@ -18,13 +18,17 @@
     <h6><b>Local: &nbsp;</b>{{curso.localizacao}}</h6>
     <p style="text-align: justify; font-size:medium;">{{curso.descricao}}</p>
     <h6><b>Ministrante: &nbsp;</b> {{curso.ministrante}}</h6>
-    <p style="text-align: justify; font-size:medium;">{{curso.resumoProfissional}}</p>
+    <p style="text-align: justify; font-size:medium;" *ngIf="curso.resumoProfissional != undefined  && curso.resumoProfissional != 'undefined' && curso.resumoProfissional != null && curso.resumoProfissional != ''">
+      {{curso.resumoProfissional}}
+    </p>
     <h6><b>Investimento:</b></h6>
     <h6><i>MEI associado -</i> &nbsp; {{curso.valormeiassociado}}</h6>
     <h6><i>MEI não associado -</i> &nbsp; {{curso.valormeianaossociado}}</h6>
     <h6><i>Empresa associada -</i> &nbsp; {{curso.valorempresaassociada}}</h6>
     <h6><i>Empresa não associada -</i> &nbsp; {{curso.valorempresanaoassociada}}</h6>
-    <h6><i>Pessoa Física -</i> &nbsp; {{curso.valorpessoafisica}}</h6>
+    <h6 *ngIf="curso.valorpessoafisica != undefined && curso.valorpessoafisica != 'undefined' && curso.valorpessoafisica != null && curso.valorpessoafisica != ''">
+      <i>Pessoa Física -</i> &nbsp; {{curso.valorpessoafisica}}
+    </h6>
     <h6>
       <a *ngIf="curso.link != 'undefined' && curso.link != '' && curso.link != null" (click)="abrirLink()">Link de
         inscrição</a>

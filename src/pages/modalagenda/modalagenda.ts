@@ -34,20 +34,27 @@ title: string;
   }
 
   salvaNotificacao(){
-    var id = Math.floor(Math.random() * 65536);
-    var data = new Date();
-    data.setFullYear(this.crit.ano);
-    data.setMonth(+this.crit.mes-1);
-    data.setDate(this.crit.dia);
-    data.setHours(8);
-    data.setMinutes(20);
-    data.setSeconds(0);
+    var dataAtual = new Date();
+    var dataString = String(dataAtual);
+    var dataSplit = dataString.split(":");
+    var idParcial = dataSplit[1]+dataSplit[2];
+    var idParcialSplit = idParcial.split(" ");
+    var id = +idParcialSplit[0];    
+
+    var dataEvento = new Date();
+    
+    dataEvento.setFullYear(+this.crit.ano);
+    dataEvento.setMonth(+this.crit.mes-1);
+    dataEvento.setDate(+this.crit.dia);
+    dataEvento.setHours(8);
+    dataEvento.setMinutes(20);
+    dataEvento.setSeconds(0);
 
     this.localNotifications.schedule({
       id: id,
       title: "Evento Marcado Para Hoje",
       text: this.crit.titulo,
-      trigger: {at: data}
+      trigger: {at: dataEvento}
     });
       let toast = this.toastCtrl.create({
         message: 'Você Será Notificado No Dia Do Evento',

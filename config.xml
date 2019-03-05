@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget Android-versionCode="4" id="ctech.acim" version="0.0.4" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget Android-versionCode="5" id="ctech.acim" version="0.0.5" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>ACIM</name>
     <description>ACIM MARABÁ | Associação Comercial e Industrial de Marabá</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>

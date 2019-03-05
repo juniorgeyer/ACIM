@@ -38,8 +38,6 @@ import {LocalNotifications} from "@ionic-native/local-notifications";
 import { ServiceProvider } from '../providers/service/service';
 import { IonicStorageModule } from '@ionic/storage';
 import { ModalinicialPage } from '../pages/modalinicial/modalinicial';
-import { TestesPage } from '../pages/testes/testes';
-
 
 @NgModule({
   declarations: [
@@ -56,8 +54,7 @@ import { TestesPage } from '../pages/testes/testes';
     QuemsomosPage,
     EmpresasassociadasPage,
     Autosize,
-    ModalinicialPage,
-    TestesPage
+    ModalinicialPage
   ],
   imports: [
     BrowserModule,
@@ -91,8 +88,7 @@ import { TestesPage } from '../pages/testes/testes';
     NovocursoPage,
     QuemsomosPage,
     EmpresasassociadasPage,
-    ModalinicialPage,
-    TestesPage
+    ModalinicialPage
 
   ],
   providers: [
