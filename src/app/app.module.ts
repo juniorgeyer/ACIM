@@ -38,6 +38,7 @@ import {LocalNotifications} from "@ionic-native/local-notifications";
 import { ServiceProvider } from '../providers/service/service';
 import { IonicStorageModule } from '@ionic/storage';
 import { ModalinicialPage } from '../pages/modalinicial/modalinicial';
+import { PoliticaPage } from '../pages/politica/politica';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { ModalinicialPage } from '../pages/modalinicial/modalinicial';
     QuemsomosPage,
     EmpresasassociadasPage,
     Autosize,
-    ModalinicialPage
+    ModalinicialPage,
+    PoliticaPage
   ],
   imports: [
     BrowserModule,
@@ -88,8 +90,8 @@ import { ModalinicialPage } from '../pages/modalinicial/modalinicial';
     NovocursoPage,
     QuemsomosPage,
     EmpresasassociadasPage,
-    ModalinicialPage
-
+    ModalinicialPage,
+    PoliticaPage
   ],
   providers: [
     StatusBar,

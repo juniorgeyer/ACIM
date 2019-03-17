@@ -23,6 +23,7 @@ import { CapacitacimPage } from '../pages/capacitacim/capacitacim';
 import { EmpresasassociadasPage } from '../pages/empresasassociadas/empresasassociadas';
 import { CadastroagendaProvider } from '../providers/cadastroagenda/cadastroagenda';
 import { ModalagendaPage } from '../pages/modalagenda/modalagenda';
+import { PoliticaPage } from '../pages/politica/politica';
 
 
 @Component({
@@ -112,6 +113,9 @@ export class MyApp {
   }
   chamaEmpresas(selectedTab){
     this.nav.push(EmpresasassociadasPage, {selectedTab:selectedTab});
+  }
+  chamaPolitica(){
+    this.nav.push(PoliticaPage);
   }
 
 }
